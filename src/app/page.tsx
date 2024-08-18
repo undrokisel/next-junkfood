@@ -7,7 +7,7 @@ export default function Home() {
     <h1>Home</h1>
     <Button
     size="lg"
-    variant="link"
+    variant="outline"
     >Купить</Button>
   </>
   );
