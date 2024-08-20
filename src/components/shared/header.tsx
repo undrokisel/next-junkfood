@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { Magnet, PersonStanding, PersonStandingIcon, ShoppingCart, User } from 'lucide-react';
+import { ArrowRight, Magnet, PersonStanding, PersonStandingIcon, ShoppingCart, User } from 'lucide-react';
 import Image from "next/image";
-import { Container } from "../shared/container";
+import { Container } from "./container";
 
 
 
@@ -45,12 +45,31 @@ export const Header: React.FC<Props> = ({className}) => {
 
                 {/* header button block */}
                 <div className="flex justify-between gap-2">
-                    <Button variant="outline" className="flex items-center">
+                    <Button variant="outline" className="flex items-center gap-1">
                         <User size={16} />
                         <span>Войти</span>
                         </Button>
-                    <Button variant="outline" size="icon">
-                        <ShoppingCart size={20} />
+                    <Button 
+                        className="group relative"
+                    >
+                        <b>100 pуб</b>
+                        {/* divider */}
+                        <span className="h-full bg-secondary w-[1px] mx-2"/>
+                        <div className="flex gap-1 items-center transition duration-300 group-hover:opacity-0">
+                            <ShoppingCart 
+                                strokeWidth={2}
+                                className="h-4 w-4 relative"/>
+                            <b>2</b>
+                        </div>
+                        <ArrowRight
+                            className="w-5 absolute right-5 
+                            transition duration-300
+                            -translate-x-2 
+                            opacity-0 
+                            group-hover:opacity-100 
+                            group-hover:translate-x-0
+                            "
+                        />
                     </Button>
                 </div>
 
