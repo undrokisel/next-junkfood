@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+src/components/shared/filters.tsx
+src/components/shared/products-list.tsx
