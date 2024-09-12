@@ -1,6 +1,5 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Button } from '../ui';
 import { ArrowUpDown } from 'lucide-react';
 
 interface Props {
@@ -8,12 +7,12 @@ interface Props {
   sortBy?: string;
 }
 
-const typeSort = [
-  'возрастание цены',
-  'убывание цены',
-  'алфавиту',
-  'популярные',
-];
+// const typeSort = [
+//   'возрастание цены',
+//   'убывание цены',
+//   'алфавиту',
+//   'популярные',
+// ];
 
 export const SortPopup: React.FC<Props> = ({ className, sortBy }) => {
   return (

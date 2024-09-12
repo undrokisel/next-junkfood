@@ -17,7 +17,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         className
       )}
     >
-      <Title text='Фильтры' />
+      <Title text='Фильтры' size='sm' className='font-bold' />
 
       {/* checkboxes */}
       <ul className='flex flex-col gap-4 mt-5'>
