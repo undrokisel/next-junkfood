@@ -9,6 +9,7 @@
   },
   "extends": [
     "airbnb",
+    "airbnb-typescript",
     "prettier",
     "eslint:recommended",
     "next/core-web-vitals",
@@ -20,75 +21,47 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "project": true
+    "project": "./tsconfig.json"
   },
   "plugins": ["prettier"],
-
   "settings": {
     "import/resolver": {
       "typescript": {},
       "alias": {
         "map": [["@", "./src"]]
       }
-    },
-
-    "root": true,
-    "ignorePatterns": ["dist"],
-    "rules": {
-      "no-shadow": "off",
-      "arrow-body-style": "off",
-      "import/extensions": "off",
-      "curly": ["error", "multi"],
-      "react/button-has-type": "off",
-      "react/react-in-jsx-scope": "off",
-      "react/jsx-filename-extension": "off",
-      "import/prefer-default-export": "warn",
-      "semi": 0, // let it handle by prettier
-      "react/function-component-definition": "off",
-      "indent": "off", // let it handle by prettier
-      "max-len": "off", // let it handle by prettier
-      "comma-dangle": "off", // let it handle by prettier
-      "no-redeclare": "off", // let it handle by TypeScript
-      "react/jsx-indent": "off", // let it handle by prettier
-      "no-unused-vars": "off", // let it handle by TypeScript
-      "prettier/prettier": ["error", { "endOfLine": "auto" }],
-      "operator-linebreak": "off", // let it handle by prettier
-      "object-curly-newline": "off", // let it handle by prettier
-      "function-paren-newline": "off", // let it handle by prettier
-      "implicit-arrow-linebreak": "off", // let it handle by prettier
-      "react/require-default-props": "off", // let it handle by TypeScript
-      "nonblock-statement-body-position": "off", // let it handle by prettier
-      "react/jsx-one-expression-per-line": "off", // let it handle by prettier
-      "no-var": "error",
-      "prefer-const": "warn"
-      //old
-      // "@typescript-eslint/no-restricted-imports": [
-      //   2,
-      //   {
-      //     "paths": [
-      //       {
-      //         "name": "react-redux",
-      //         "importNames": ["useSelector", "useStore", "useDispatch"],
-      //         "message": "Please use pre-typed versions from `src/app/hooks.ts` instead."
-      //       }
-      //     ]
-      //   }
-      // ],
-      // "import/order": [
-      //   2,
-      //   {
-      //     "groups": ["external", "builtin", "index", "sibling", "parent", "internal", "type"],
-      //     "alphabetize": {
-      //       "order": "asc",
-      //       "caseInsensitive": true
-      //     },
-      //     "newlines-between": "always-and-inside-groups"
-      //   }
-      // ]
     }
-    // "overrides": [
-    //   { "files": ["*.{c,m,}{t,j}s", "*.{t,j}sx"] },
-    //   { "files": ["*{test,spec}.{t,j}s?(x)"], "env": { "jest": true } }
-    // ]
+  },
+  "root": true,
+  "ignorePatterns": ["dist"],
+  "rules": {
+    "no-shadow": "off",
+    "arrow-body-style": "off",
+    "import/extensions": "off",
+    "curly": ["error", "multi"],
+    "react/button-has-type": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "import/prefer-default-export": "warn",
+    "semi": 0, // let it handle by prettier
+    "react/function-component-definition": "off",
+    "indent": "off", // let it handle by prettier
+    "max-len": "off", // let it handle by prettier
+    "comma-dangle": "off", // let it handle by prettier
+    "no-redeclare": "off", // let it handle by TypeScript
+    "react/jsx-indent": "off", // let it handle by prettier
+    "no-unused-vars": "off", // let it handle by TypeScript
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "operator-linebreak": "off", // let it handle by prettier
+    "object-curly-newline": "off", // let it handle by prettier
+    "function-paren-newline": "off", // let it handle by prettier
+    "implicit-arrow-linebreak": "off", // let it handle by prettier
+    "react/require-default-props": "off", // let it handle by TypeScript
+    "nonblock-statement-body-position": "off", // let it handle by prettier
+    "react/jsx-one-expression-per-line": "off", // let it handle by prettier
+    "label-has-associated-control": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-var": "error",
+    "prefer-const": "warn"
   }
 }
