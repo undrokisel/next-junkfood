@@ -13,10 +13,10 @@ export default function Home() {
       </Container>
 
       <Container className='mt-[40px]'>
-        <div className='flex gap-[30px]'>
+        <div className='flex gap-[50px]'>
           <Filters
             className={cn(`
-            px-[30px]
+            px-6
             w-[250px]
             `)}
           />

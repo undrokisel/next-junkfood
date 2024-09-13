@@ -27,16 +27,23 @@ export const Filters: React.FC<Props> = ({ className }) => {
       </div>
 
       {/* price range filter */}
-      <div className='flex flex-col gap-4 mt-10'>
+      <div className='flex flex-col gap-4 mt-10 border-y border-y-neutral-200 py-6 pb-7'>
         <Title text='Цена: от и до' size='xs' />
-        <div className='flex'>
-          <Input type='number' placeholder='0' min='0' max='10000' />
-          <Input type='number' placeholder='10000' min='0' max='10000' />
+        <div className='flex gap-3 mb-5'>
+          <Input
+            type='number'
+            placeholder='0'
+            min={0}
+            max={10000}
+            defaultValue={0}
+          />
+          <Input type='number' placeholder='10000' min={0} max={10000} />
         </div>
         <Slider
-          defaultValue={[50]}
+          value={[0, 10000]}
+          min={0}
           max={10000}
-          step={1}
+          step={10}
           className={cn('w-[90%]', className)}
         />
       </div>
