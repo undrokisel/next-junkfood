@@ -1,16 +1,9 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
+import { ArrowRight, ShoppingCart, User } from 'lucide-react';
+import Image from 'next/image';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import {
-  ArrowRight,
-  Magnet,
-  PersonStanding,
-  PersonStandingIcon,
-  ShoppingCart,
-  User,
-} from 'lucide-react';
-import Image from 'next/image';
 import { Container } from './container';
 
 interface Props {

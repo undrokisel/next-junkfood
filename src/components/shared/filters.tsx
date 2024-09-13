@@ -2,6 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { Title } from './title';
 import { Button, Checkbox, Input, Slider } from '../ui';
+import { FilterCheckbox } from './filter-checkbox';
 
 interface Props {
   className?: string;
@@ -20,36 +21,10 @@ export const Filters: React.FC<Props> = ({ className }) => {
       <Title text='Фильтры' size='sm' className='font-bold' />
 
       {/* checkboxes */}
-      <ul className='flex flex-col gap-4 mt-5'>
-        <li>
-          <div className='flex items-center space-x-2'>
-            <Checkbox id='collect' className='bg-gray-50' />
-            <label
-              htmlFor='collect'
-              className={`
-                                    text-sm font-medium leading-none 
-                                    peer-disabled:cursor-not-allowed 
-                                    peer-disabled:opacity-70`}
-            >
-              You can collect it
-            </label>
-          </div>
-        </li>
-        <li>
-          <div className='flex items-center space-x-2'>
-            <Checkbox id='newItems' className='bg-gray-50' />
-            <label
-              htmlFor='newItems'
-              className={`
-                                    text-sm font-medium leading-none 
-                                    peer-disabled:cursor-not-allowed 
-                                    peer-disabled:opacity-70`}
-            >
-              Новинки
-            </label>
-          </div>
-        </li>
-      </ul>
+      <div className='flex flex-col gap-4 mt-5'>
+        <FilterCheckbox text='Новинки' value='new' />
+        <FilterCheckbox text='Собрать свое' value='collect' />
+      </div>
 
       {/* price range filter */}
       <div className='flex flex-col gap-4 mt-10'>

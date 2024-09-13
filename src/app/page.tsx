@@ -9,7 +9,7 @@ export default function Home() {
     <div className='min-h-[1500px]'>
       <TopBar />
       <Container className='mt-10'>
-        <Title size='lg' text='Весь ассортимент' />
+        <Title size='lg' text='Весь ассортимент' className='ml-6' />
       </Container>
 
       <Container className='mt-[40px]'>
