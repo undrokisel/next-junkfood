@@ -1,12 +1,24 @@
+'use client';
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Title } from './title';
-import { Button, Checkbox, Input, Slider } from '../ui';
+import { Input, Slider } from '../ui';
 import { FilterCheckbox } from './filter-checkbox';
+import { CheckboxFilterGroup } from './checkbox-filter-group';
 
 interface Props {
   className?: string;
 }
+
+const items = [
+  { text: 'сыр', value: 'сыр' },
+  { text: 'бекон', value: 'бекон' },
+  { text: 'пепперони', value: 'пепперони' },
+  { text: 'ананас', value: 'ананас' },
+  { text: 'картофель фри', value: 'картофель' },
+  { text: 'капуста', value: 'капуста' },
+];
 
 export const Filters: React.FC<Props> = ({ className }) => {
   return (
@@ -27,58 +39,28 @@ export const Filters: React.FC<Props> = ({ className }) => {
       </div>
 
       {/* price range filter */}
-      <div className='flex flex-col gap-4 mt-10 border-y border-y-neutral-200 py-6 pb-7'>
+      <div className='flex flex-col gap-4 mt-10'>
         <Title text='Цена: от и до' size='xs' />
-        <div className='flex gap-3 mb-5'>
-          <Input
-            type='number'
-            placeholder='0'
-            min={0}
-            max={10000}
-            defaultValue={0}
-          />
-          <Input type='number' placeholder='10000' min={0} max={10000} />
+        <div className='flex'>
+          <Input type='number' placeholder='0' min='0' max='10000' />
+          <Input type='number' placeholder='10000' min='0' max='10000' />
         </div>
         <Slider
-          value={[0, 10000]}
           min={0}
           max={10000}
-          step={10}
+          step={1}
           className={cn('w-[90%]', className)}
         />
       </div>
 
       {/* ingridients */}
-      <Title text='Ингридиенты:' size='xs' className='mt-10' />
-      <ul className='flex flex-col gap-4 mt-5'>
-        <div className='flex items-center space-x-2'>
-          <Checkbox id='newItems' className='bg-gray-50' />
-          <label
-            htmlFor='newItems'
-            className={`
-                                    text-sm font-medium leading-none 
-                                    peer-disabled:cursor-not-allowed 
-                                    peer-disabled:opacity-70`}
-          >
-            Сырный соус
-          </label>
-        </div>
-        <div className='flex items-center space-x-2'>
-          <Checkbox id='newItems' className='bg-gray-50' />
-          <label
-            htmlFor='newItems'
-            className={`
-                                    text-sm font-medium leading-none 
-                                    peer-disabled:cursor-not-allowed 
-                                    peer-disabled:opacity-70`}
-          >
-            Моцарелла
-          </label>
-        </div>
-      </ul>
-      <Button className='mt-5' variant=''>
-        + Показать все
-      </Button>
+      <CheckboxFilterGroup
+        title='Ингридиенты: '
+        items={items}
+        defaultItems={items.slice(0, 5)}
+        className='mt-5'
+        limit={5}
+      />
     </aside>
   );
 };
