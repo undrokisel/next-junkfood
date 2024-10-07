@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Categories } from './categories';
+import { Categories, Category } from './categories';
 import { Popover } from '../ui';
 import { PopoverContent, PopoverTrigger } from '../ui/popover';
 import { SortPopup } from './sort-popup';
@@ -10,9 +10,13 @@ interface Props {
   className?: string;
 }
 
-const categories = ['шаурма', 'добавки', 'комбо', 'акции', 'десерты'];
-
-const activeIndex = 1;
+const categories: Category[] = [
+  { name: 'шаурма', id: 1 },
+  { name: 'добавки', id: 2 },
+  { name: 'комбо', id: 3 },
+  { name: 'акции', id: 4 },
+  { name: 'десерты', id: 5 },
+];
 
 export const TopBar: React.FC<Props> = ({ className }) => {
   return (
@@ -23,7 +27,7 @@ export const TopBar: React.FC<Props> = ({ className }) => {
       )}
     >
       <Container className='flex justify-between items-center'>
-        <Categories categories={categories} activeIndex={activeIndex} />
+        <Categories categories={categories} />
 
         <Popover>
           <PopoverTrigger>

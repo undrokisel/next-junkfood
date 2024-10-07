@@ -1,8 +1,77 @@
-import { ProductsList, TopBar } from '@/components/shared';
+import { ProductsGroupList, TopBar } from '@/components/shared';
 import { cn } from '@/lib/utils';
+import { Product } from '@/components/shared/product-card';
 import { Title } from '../components/shared/title';
 import { Container } from '../components/shared/container';
 import { Filters } from '../components/shared/filters';
+
+const products: Product[] = [
+  {
+    id: 1,
+    name: `Шаурма "Стандарт"`,
+    description: 'Обычная шаурма',
+    imgUrl: '/images/products/standart.png',
+    items: [{ price: 300 }],
+  },
+  {
+    id: 2,
+    name: `Шаурма "Мини"`,
+    description: 'Мини шаурма',
+    imgUrl: '/images/products/mini.png',
+    items: [{ price: 250 }],
+  },
+  {
+    id: 3,
+    name: `Шаурма "Богатырская"`,
+    description: 'Большая шаурма',
+    imgUrl: '/images/products/big.png',
+    items: [{ price: 400 }],
+  },
+  {
+    id: 4,
+    name: `Шаурма "Стандарт"`,
+    description: 'Обычная шаурма',
+    imgUrl: '/images/products/standart.png',
+    items: [{ price: 300 }],
+  },
+  {
+    id: 5,
+    name: `Шаурма "Мини"`,
+    description: 'Мини шаурма',
+    imgUrl: '/images/products/mini.png',
+    items: [{ price: 250 }],
+  },
+  {
+    id: 6,
+    name: `Шаурма "Богатырская"`,
+    description: 'Большая шаурма',
+    imgUrl: '/images/products/big.png',
+    items: [{ price: 400 }],
+  },
+];
+
+const categories = [
+  {
+    id: 1,
+    name: 'шаурма',
+  },
+  {
+    id: 2,
+    name: 'добавки',
+  },
+  {
+    id: 3,
+    name: 'комбо',
+  },
+  {
+    id: 4,
+    name: 'акции',
+  },
+  {
+    id: 5,
+    name: 'десерты',
+  },
+];
 
 export default function Home() {
   return (
@@ -20,7 +89,17 @@ export default function Home() {
             w-[250px]
             `)}
           />
-          <ProductsList className='flex-1' />
+
+          <div className='flex flex-col gap-16'>
+            {categories.map((category) => (
+              <ProductsGroupList
+                key={category.id}
+                title={category.name}
+                products={products}
+                categoryId={category.id}
+              />
+            ))}
+          </div>
         </div>
       </Container>
     </div>

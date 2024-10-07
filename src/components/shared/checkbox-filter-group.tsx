@@ -33,8 +33,10 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
   const [searchValue, setSearchValue] = useState('');
 
   const list = showAll
-    ? items.filter((item) => item.text.toLowerCase().includes(searchValue))
-    : defaultItems.slice(0, limit);
+    ? items.filter((item) =>
+        item.text.toLowerCase().includes(searchValue.toLocaleLowerCase())
+      )
+    : (defaultItems || items).slice(0, limit);
 
   const maxIndex = !showAll ? limit : items.length;
 

@@ -4,6 +4,7 @@ export { Title } from './title';
 export { Categories } from './categories';
 export { SortPopup } from './sort-popup';
 export { TopBar } from './top-bar';
-export { ProductsList } from './products-list';
+export { ProductsGroupList } from './products-group-list';
 export { FilterCheckbox } from './filter-checkbox';
 export { CheckboxFilterGroup } from './checkbox-filter-group';
+export { ProductCard } from './product-card';

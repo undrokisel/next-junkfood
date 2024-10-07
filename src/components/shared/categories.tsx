@@ -1,36 +1,37 @@
+'use client';
+
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Button } from '../ui';
-import { ArrowUpDown } from 'lucide-react';
+import { useCategoryStore } from '../../../store/category';
 
+export interface Category {
+  name: string;
+  id: number;
+}
 interface Props {
   className?: string;
-  categories: string[];
-  activeIndex?: number;
+  categories: Category[];
 }
 
-export const Categories: React.FC<Props> = ({
-  className,
-  categories,
-  activeIndex,
-}) => {
+export const Categories: React.FC<Props> = ({ className, categories }) => {
+  const categoryActiveId = useCategoryStore((state) => state.activeId);
   return (
     <ul
       className={cn(`inline-flex gap-1 bg-gray-50 p-1 rounded-md`, className)}
     >
-      {categories.map((category, index) => {
+      {categories.map(({ name, id }, index) => {
         return (
           <li key={index}>
             <a
-              href={`#${category}`}
+              href={`/#${name}`}
               className={cn(
                 'flex items-center font-bold h-11 rounded-md px-5',
-                activeIndex === index &&
+                categoryActiveId === id &&
                   `shadow-md shadow-gray-400 
                                             text-primary bg-white`
               )}
             >
-              <button>{category}</button>
+              <button>{name}</button>
             </a>
           </li>
         );
