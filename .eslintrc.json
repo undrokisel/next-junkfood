@@ -62,9 +62,10 @@
     "react/jsx-one-expression-per-line": "off", // let it handle by prettier
     "label-has-associated-control": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "no-var": "error",
+    "no-var": "off",
     "prefer-const": "warn",
     "react/jsx-props-no-spreading": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "vars-on-top": "off"
   }
 }

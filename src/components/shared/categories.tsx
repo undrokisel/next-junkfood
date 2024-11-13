@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { useCategoryStore } from '../../../store/category';
+import { useCategoryStore } from '../../store/category';
 
 export interface Category {
   name: string;

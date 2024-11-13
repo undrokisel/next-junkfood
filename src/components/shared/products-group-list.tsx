@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { useIntersection } from 'react-use';
 import { Product, ProductCard } from './product-card';
 import { Title } from './title';
-import { useCategoryStore } from '../../../store/category';
+import { useCategoryStore } from '../../store/category';
 
 interface ProductsGroupListProps {
   products: Product[];
