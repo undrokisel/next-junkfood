@@ -33,6 +33,9 @@ model User {
     orders Order[]
 
     // у одного пользователя может быть один код
+    // по сути от этого зависит поле verified
+    // опционально, потому что в момент создания юзер еще не имеет этого кода
+    // код может быть запрошен позднее
     verificationCode VerificationCode?
 
     createdAt DateTime @default(now())
@@ -62,6 +65,9 @@ model Product {
 // вариация продукта (обязательно имеет цену
 //  в зависимости от опциональных полей)
 // размера, типа лаваша
+// то есть главное в этой модели - привязка к цене, в зависимости от 
+// какой либо вариации (размера, типа чето-то), 
+// кроме ингридиентов, которые вынесены в отдельную модель
 model ProductVariant {
     id Int @id @default(autoincrement())
 
@@ -129,6 +135,7 @@ model Cart {
     // связь: корзина может состоять из многих "продуктов в корзине"
     items CartItem[]
 
+    // если есть токен, то значит корзина анонимная
     token String?
 
     totalAmount Int @default(0)
@@ -140,6 +147,9 @@ model Cart {
 // "продукт в корзине".
 // ссылается на "конкретную корзину"  и "кокретный товар", и имеет его количество.
 // имеет набор ингедиентов и подсчитанную цену.
+// по сути эта модель - это вариант продукта (и его цена)
+// + набор ингридиентов и их цена
+// и соответственно общая стоимость и количество таких продуктов
 model CartItem {
     id Int @id @default(autoincrement())
 
@@ -158,6 +168,9 @@ model CartItem {
     totalPrice Int @default(0)
 
     ingredients Ingredient[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 // заказ может создать также и анонимный пользователь
@@ -177,6 +190,8 @@ model Order {
     // связь: заказ может состоять из многих "продуктов в заказе"
     // items OrderItem[]
     // временное решение: товары в заказе будут прямо сохранены в json
+    // чтобы не прописывать связь с корзиной и cartItems
+    // смысл в том, что товары в оформленном заказе уже не будут редактироваться
     items Json
 
     totalAmount Int @default(0)
@@ -206,9 +221,9 @@ model Order {
 }
 
 enum OrderStatus {
-    PENDING
+    PENDING //только создан, не оплачен
     PAYD
-    CANCELED
+    CANCELLED
 }
 
 enum DeliveryType {
@@ -235,7 +250,6 @@ model VerificationCode {
 
     code String
     // expiresAt DateTime @default(now())
-
     createdAt DateTime @default(now())
 }
 
@@ -244,7 +258,7 @@ model VerificationCode {
 // model OrderItem {
 
 //     id Int @id @default(autoincrement())
-//     // связь: один продукт из заказа может относиться только к одному заказу
+// связь: один продукт из заказа может относиться только к одному заказу
 //     order   Order @relation(fields: [orderId], references: [id])
 //     orderId Int
 
