@@ -1,10 +1,13 @@
+// 'use client';
+
 import { cn } from '@/lib/utils';
 import React from 'react';
 import { ArrowRight, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
-import { Input } from '../ui/input';
+import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Container } from './container';
+import { SearchInput } from './search-input';
 
 interface Props {
   className?: string;
@@ -15,26 +18,26 @@ export const Header: React.FC<Props> = ({ className }) => {
     <header className={cn('border border-b-2 ', className)}>
       <Container className='flex justify-between items-center py-7 px-2'>
         {/* logo block */}
-        <div className='flex justify-between gap-4'>
-          <picture>
-            <Image
-              src='/images/шаурма.webp'
-              width='50'
-              height='50'
-              alt='Логотип'
-              className='rounded-full'
-            />
-          </picture>
-          <div className='flex flex-col'>
-            <h1 className='uppercase text-2xl font-black'>Твоя шаурма</h1>
-            <p className='text-gray-400 leading-3 text-sm'>И только твоя</p>
+        <Link href='/'>
+          <div className='flex justify-between gap-4'>
+            <picture>
+              <Image
+                src='/images/шаурма.webp'
+                width='50'
+                height='50'
+                alt='Логотип'
+                className='rounded-full'
+              />
+            </picture>
+            <div className='flex flex-col'>
+              <h1 className='uppercase text-2xl font-black'>Твоя шаурма</h1>
+              <p className='text-gray-400 leading-3 text-sm'>И только твоя</p>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* search block */}
-        <div className='search'>
-          <Input placeholder='Поиск по ассортименту ...' />
-        </div>
+        <SearchInput className='mx-10' />
 
         {/* header button block */}
         <div className='flex justify-between gap-2'>
