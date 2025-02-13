@@ -1,6 +1,7 @@
 import { ProductsGroupList, TopBar } from '@/components/shared';
 import { cn } from '@/lib/utils';
 import { Product } from '@/components/shared/product-card';
+import { Suspense } from 'react';
 import { Title } from '../components/shared/title';
 import { Container } from '../components/shared/container';
 import { Filters } from '../components/shared/filters';
@@ -83,12 +84,14 @@ export default function Home() {
 
       <Container className='mt-[40px]'>
         <div className='flex gap-[50px]'>
-          <Filters
-            className={cn(`
-            px-6
-            w-[250px]
-            `)}
-          />
+          <Suspense>
+            <Filters
+              className={cn(`
+              px-6
+              w-[250px]
+              `)}
+            />
+          </Suspense>
 
           <div className='flex flex-col gap-16'>
             {categories.map((category) => (

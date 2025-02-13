@@ -31,7 +31,7 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
 
   useEffect(() => {
     if (intersection?.isIntersecting) setActiveCategoryId(categoryId);
-  }, [categoryId, intersection?.isIntersecting, title]);
+  }, [categoryId, intersection?.isIntersecting, title, setActiveCategoryId]);
 
   return (
     <section className={cn(className)} ref={intersectionRef} id={title}>
