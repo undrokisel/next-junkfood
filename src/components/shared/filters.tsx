@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 import { useIngredients, useFilters, useQueryFilters } from '@/hooks';
 import { Title } from './title';
 import { Input, Slider } from '../ui';

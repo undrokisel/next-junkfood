@@ -1,10 +1,13 @@
-import { ProductsGroupList, TopBar } from '@/components/shared';
-import { cn } from '@/lib/utils';
+import {
+  ProductsGroupList,
+  TopBar,
+  Container,
+  Filters,
+  Title,
+} from '@/components/shared';
+import { cn } from '@/shared/lib/utils';
 import { Product } from '@/components/shared/product-card';
 import { Suspense } from 'react';
-import { Title } from '../components/shared/title';
-import { Container } from '../components/shared/container';
-import { Filters } from '../components/shared/filters';
 
 const products: Product[] = [
   {

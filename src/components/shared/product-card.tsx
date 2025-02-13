@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { Title } from './title';

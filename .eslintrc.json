@@ -61,7 +61,9 @@
     "nonblock-statement-body-position": "off", // let it handle by prettier
     "react/jsx-one-expression-per-line": "off", // let it handle by prettier
     "label-has-associated-control": "off",
+    "jsx-a11y/control-has-associated-label": "off",
     "jsx-a11y/label-has-associated-control": "off",
+    "react/jsx-no-useless-fragment": "off",
     "no-var": "off",
     "prefer-const": "warn",
     "react/jsx-props-no-spreading": "off",

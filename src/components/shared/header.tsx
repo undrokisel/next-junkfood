@@ -1,6 +1,6 @@
 // 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 import React from 'react';
 import { ArrowRight, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
@@ -11,9 +11,10 @@ import { SearchInput } from './search-input';
 
 interface Props {
   className?: string;
+  hasSearch?: boolean;
 }
 
-export const Header: React.FC<Props> = ({ className }) => {
+export const Header: React.FC<Props> = ({ className, hasSearch = true }) => {
   return (
     <header className={cn('border border-b-2 ', className)}>
       <Container className='flex justify-between items-center py-7 px-2'>
@@ -37,7 +38,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         </Link>
 
         {/* search block */}
-        <SearchInput className='mx-10' />
+        {hasSearch && <SearchInput className='mx-10' />}
 
         {/* header button block */}
         <div className='flex justify-between gap-2'>

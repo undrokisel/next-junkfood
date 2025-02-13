@@ -1,18 +1,13 @@
-import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
+
 import './globals.css';
-import { Header } from '@/components/shared/header';
+import { Providers } from '@/components/shared/providers';
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
   variable: '--font-nunito',
   weight: ['400', '500', '600', '700', '800', '900'],
 });
-
-export const metadata: Metadata = {
-  title: 'Shaurma #2',
-  description: 'Но мы все равно № 1',
-};
 
 export default function RootLayout({
   children,
@@ -21,11 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
+      <head>
+        <link data-rh='true' rel='icon' href='/logo.png' />
+      </head>
       <body className={nunito.className}>
-        <main className='min-h-screen'>
-          <Header />
-          {children}
-        </main>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 import { Categories, Category } from './categories';
 import { Popover } from '../ui';
 import { PopoverContent, PopoverTrigger } from '../ui/popover';

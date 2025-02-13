@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 // eslint-disable-next-line
 import { useIntersection } from 'react-use';
 import { Product, ProductCard } from './product-card';
