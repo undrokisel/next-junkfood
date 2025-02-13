@@ -25,8 +25,14 @@ export const SearchInput: React.FC<Props> = (props: Props) => {
 
   // под капотом use effect
   useDebounce(
-    () => {
-      Api.products.search(query).then((items) => setProducts(items));
+    async () => {
+      try {
+        const response = await Api.products.search(query);
+        setProducts(response);
+      } catch (error) {
+        // eslint-disable-next-line
+        console.log(error);
+      }
     },
     500,
     [query]

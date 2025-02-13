@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ChangeEvent, useState } from 'react';
-import { Button, Input } from '../ui';
+import { Button, Input, Skeleton } from '../ui';
 import { FilterCheckbox, FilterCheckboxProps } from './filter-checkbox';
 
 type Item = FilterCheckboxProps;
@@ -9,12 +9,15 @@ type Item = FilterCheckboxProps;
 interface Props {
   title: string;
   items: Item[];
-  defaultItems: Item[];
+  defaultItems?: Item[];
   limit?: number;
   searchInputPlaceholder?: string;
-  onChange?: (values: string[]) => void;
+  onCheckboxClick?: (id: string) => void;
   defaultValue?: string[];
   className?: string;
+  loading?: boolean;
+  selectedIds?: Set<string>;
+  name?: string;
 }
 
 export const CheckboxFilterGroup: React.FC<Props> = ({
@@ -23,11 +26,13 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
   items,
   defaultItems,
   limit = 3,
+  loading = false,
   searchInputPlaceholder = 'Поиск...',
   // eslint-disable-next-line
   defaultValue,
-  // eslint-disable-next-line
-  onChange,
+  onCheckboxClick,
+  selectedIds,
+  name,
 }) => {
   const [showAll, setIsShowAll] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -43,6 +48,16 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
   const onChangeSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
+
+  if (loading)
+    return (
+      <div className={className}>
+        <p className='font-bold mb-3'>{title}</p>
+        {Array.from({ length: limit }).map((_, i) => (
+          <Skeleton key={i} className='w-full h-6 my-2 ' />
+        ))}
+      </div>
+    );
 
   return (
     <div className={className}>
@@ -68,19 +83,24 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
                   text={item.text}
                   value={item.value}
                   endAdornment={item.endAdornment}
-                  checked={false}
+                  checked={selectedIds?.has(item.value) || false}
+                  onCheckedChange={() => onCheckboxClick?.(item.value)}
+                  name={name}
                 />
               </div>
             )
         )}
       </div>
-      <Button
-        onClick={() => setIsShowAll((prev) => !prev)}
-        className='mt-5'
-        variant='link'
-      >
-        {!showAll ? '+ Показать все' : '+ Свернуть'}
-      </Button>
+
+      {items.length > limit && (
+        <Button
+          onClick={() => setIsShowAll((prev) => !prev)}
+          className='mt-5'
+          variant='link'
+        >
+          {!showAll ? '+ Показать все' : '+ Свернуть'}
+        </Button>
+      )}
     </div>
   );
 };
