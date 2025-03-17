@@ -34,7 +34,8 @@ const products: Product[] = [
   {
     id: 4,
     name: `Шаурма "Стандарт"`,
-    description: 'Обычная шаурма',
+    description:
+      'Обычная шаурма Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores quisquam obcaecati repellendus sunt sed voluptatibus omnis debitis officia unde quia, optio velit aliquid enim facilis deserunt magni, suscipit deleniti pariatur.',
     imgUrl: '/images/products/standart.png',
     items: [{ price: 300 }],
   },
