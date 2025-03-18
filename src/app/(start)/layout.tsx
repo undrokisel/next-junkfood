@@ -4,7 +4,7 @@ import '../globals.css';
 
 export const metadata: Metadata = {
   title: 'Твоя Shaurma',
-  description: 'И только твоя',
+  description: 'Стартовая демо-страница проекта',
 };
 
 export default function StartLayout({

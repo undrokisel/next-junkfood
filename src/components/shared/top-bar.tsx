@@ -7,18 +7,11 @@ import { SortPopup } from './sort-popup';
 import { Container } from './container';
 
 interface Props {
+  categories: Category[];
   className?: string;
 }
 
-const categories: Category[] = [
-  { name: 'шаурма', id: 1 },
-  { name: 'добавки', id: 2 },
-  { name: 'комбо', id: 3 },
-  { name: 'акции', id: 4 },
-  { name: 'десерты', id: 5 },
-];
-
-export const TopBar: React.FC<Props> = ({ className }) => {
+export const TopBar: React.FC<Props> = ({ categories, className }) => {
   return (
     <div
       className={cn(

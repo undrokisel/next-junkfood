@@ -6,89 +6,33 @@ import {
   Title,
 } from '@/components/shared';
 import { cn } from '@/shared/lib/utils';
-import { Product } from '@/components/shared/product-card';
 import { Suspense } from 'react';
+import { prisma } from '../../../../prisma/prisma-client';
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: `Шаурма "Стандарт"`,
-    description: 'Обычная шаурма',
-    imgUrl: '/images/products/standart.png',
-    items: [{ price: 300 }],
-  },
-  {
-    id: 2,
-    name: `Шаурма "Мини"`,
-    description: 'Мини шаурма',
-    imgUrl: '/images/products/mini.png',
-    items: [{ price: 250 }],
-  },
-  {
-    id: 3,
-    name: `Шаурма "Богатырская"`,
-    description: 'Большая шаурма',
-    imgUrl: '/images/products/big.png',
-    items: [{ price: 400 }],
-  },
-  {
-    id: 4,
-    name: `Шаурма "Стандарт"`,
-    description:
-      'Обычная шаурма Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores quisquam obcaecati repellendus sunt sed voluptatibus omnis debitis officia unde quia, optio velit aliquid enim facilis deserunt magni, suscipit deleniti pariatur.',
-    imgUrl: '/images/products/standart.png',
-    items: [{ price: 300 }],
-  },
-  {
-    id: 5,
-    name: `Шаурма "Мини"`,
-    description: 'Мини шаурма',
-    imgUrl: '/images/products/mini.png',
-    items: [{ price: 250 }],
-  },
-  {
-    id: 6,
-    name: `Шаурма "Богатырская"`,
-    description: 'Большая шаурма',
-    imgUrl: '/images/products/big.png',
-    items: [{ price: 400 }],
-  },
-];
+export default async function Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          variants: true,
+          ingredients: true,
+        },
+      },
+    },
+  });
 
-const categories = [
-  {
-    id: 1,
-    name: 'шаурма',
-  },
-  {
-    id: 2,
-    name: 'добавки',
-  },
-  {
-    id: 3,
-    name: 'комбо',
-  },
-  {
-    id: 4,
-    name: 'акции',
-  },
-  {
-    id: 5,
-    name: 'десерты',
-  },
-];
-
-export default function Home() {
   return (
     <div className='min-h-[1500px]'>
-      <TopBar />
+      <TopBar
+        categories={categories.filter((cat) => cat.products.length > 0)}
+      />
       <Container className='mt-10'>
         <Title size='lg' text='Весь ассортимент' className='ml-6' />
       </Container>
 
       <Container className='mt-[40px]'>
         <div className='flex gap-[50px]'>
-          <Suspense>
+          <Suspense fallback='<...Загрузка>'>
             <Filters
               className={cn(`
               px-6
@@ -98,14 +42,17 @@ export default function Home() {
           </Suspense>
 
           <div className='flex flex-col gap-16'>
-            {categories.map((category) => (
-              <ProductsGroupList
-                key={category.id}
-                title={category.name}
-                products={products}
-                categoryId={category.id}
-              />
-            ))}
+            {categories.map(
+              (category) =>
+                category.products.length > 0 && (
+                  <ProductsGroupList
+                    key={category.id}
+                    title={category.name}
+                    products={category.products}
+                    categoryId={category.id}
+                  />
+                )
+            )}
           </div>
         </div>
       </Container>

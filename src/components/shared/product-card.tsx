@@ -3,31 +3,32 @@ import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
+import Image from 'next/image';
 import { Title } from './title';
 import { Button } from '../ui';
 
 export type Product = {
   id: number;
-  imgUrl: string;
+  imageUrl: string;
   name: string;
-  description: string;
-  items: [{ price: number }];
+  // description: string;
+  variants: [{ price: number }];
   count?: number;
 };
 
 export interface ProductCardProps {
   id: number;
-  imgUrl: string;
+  imageUrl: string;
   name: string;
-  description: string;
+  // description: string;
   price: number;
   className?: string;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   name,
-  imgUrl,
-  description,
+  imageUrl,
+  // description,
   id,
   price,
   className,
@@ -36,17 +37,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <article className={cn(`min-h-[100%]`, className)}>
       <Link href={`/product/${id}`}>
         <div
-          className='flex flex-col justify-center p-6 bg-secondary rounded-lg 
-        min-h-[100%]
-         border
-        '
+          className='flex flex-col justify-start p-6 bg-secondary rounded-lg 
+                    min-h-[100%] border
+                    '
         >
           {/* card-image */}
-          <img className='w-[215px] h-[215px]' src={imgUrl} alt={name} />
+          <Image
+            width={215}
+            height={215}
+            className='w-[215px] h-[215px] object-contain mx-auto'
+            src={`/${imageUrl}`}
+            alt={name}
+          />
 
           {/* card-body */}
           <Title text={name} size='sm' className='mb-1 mt-3 font-bold' />
-          <p className='flex-grow-1 text-sm text-gray-400'>{description}</p>
+          <p className='flex-grow-1 text-sm text-gray-400 flex-grow'>
+            {/* {description} */}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
+            dolore dolorem. Temporibus quasi quam quibusdam impedit sequi dolore
+            iste. Non dolores impedit, esse reprehenderit doloribus natus quis?
+            Aperiam, cupiditate quis.
+          </p>
 
           {/* card-footer */}
           <div className='flex justify-between mt-4 items-center'>

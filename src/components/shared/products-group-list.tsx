@@ -42,9 +42,9 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
             <ProductCard
               key={`product-${index}`}
               name={product.name}
-              description={product.description}
-              price={product.items[0].price}
-              imgUrl={product.imgUrl}
+              // description={product.description}
+              price={product.variants[0].price}
+              imageUrl={product.imageUrl}
               id={product.id}
             />
           );

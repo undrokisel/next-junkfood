@@ -1,7 +1,9 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
+import Image from 'next/image';
 import { Title } from './title';
 import { Button } from '../ui';
+import { GroupVariants } from './group-variants';
 
 interface Props {
   imageUrl: string;
@@ -23,8 +25,10 @@ export const ChooseProductForm: React.FC<Props> = ({
   return (
     <div className={cn(className, 'flex flex-1 flex-wrap gap-4')}>
       <div className='flex items-center justify-center flex-1 relative w-full'>
-        <img
-          src={imageUrl}
+        <Image
+          src={`/${imageUrl}`}
+          width={350}
+          height={350}
           alt={name}
           className='
           object-contain
@@ -37,6 +41,32 @@ export const ChooseProductForm: React.FC<Props> = ({
           text={name}
           size='md'
           className='font-extrabold mb-1 flex-grow'
+        />
+
+        <p className='text-gray-400'>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid rerum
+          unde ipsum error ducimus explicabo quidem sequi debitis. Quae optio
+          rem voluptatem laborum voluptas quam id, totam nostrum corrupti
+          dolorem?
+        </p>
+
+        <GroupVariants
+          value='2'
+          variants={[
+            {
+              name: 'Мини',
+              value: '1',
+            },
+            {
+              name: 'Стандарт',
+              value: '2',
+            },
+            {
+              name: 'Богатырская',
+              value: '3',
+              disabled: true,
+            },
+          ]}
         />
 
         <Button

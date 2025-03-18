@@ -143,8 +143,82 @@ async function up() {
   // остальные продукты
   await prisma.productVariant.createMany({
     data: [
-      generateProductVariant({ productId: 2, price: 100 }),
-      generateProductVariant({ productId: 3, price: 110 }),
+      //  Ланчбокс с куриными крыльями - 1
+      generateProductVariant({ productId: 1, price: 395 }),
+      //  Ланчбокс с куриными нагетсами - 2
+      generateProductVariant({ productId: 2, price: 365 }),
+
+      //  Ролл Оригинальный - 3
+      generateProductVariant({ productId: 3, price: 160 }),
+      //  Ролл Сырный - 4
+      generateProductVariant({ productId: 4, price: 180 }),
+
+      //  Чизбургер - 5
+      generateProductVariant({ productId: 5, price: 160 }),
+      //  Гамбургер - 6
+      generateProductVariant({ productId: 6, price: 180 }),
+
+      //  Куриные крылышки - 7
+      generateProductVariant({ productId: 7, price: 180 }),
+      //  Куриные стрипсы - 8
+      generateProductVariant({ productId: 8, price: 160 }),
+      //  Куриные наггетсы - 9
+      generateProductVariant({ productId: 9, price: 160 }),
+      //  Куриные ножки - 10
+      generateProductVariant({ productId: 10, price: 230 }),
+
+      //  Соус Cырный - 11
+      generateProductVariant({ productId: 11, price: 45 }),
+      //  Соус Oстрый - 12
+      generateProductVariant({ productId: 12, price: 45 }),
+      //  Соус Барбекю - 13
+      generateProductVariant({ productId: 13, price: 45 }),
+      //  Соус Чесночный - 14
+      generateProductVariant({ productId: 14, price: 45 }),
+      //  Соус Терияки - 15
+      generateProductVariant({ productId: 15, price: 45 }),
+      //  Соус Томатный - 16
+      generateProductVariant({ productId: 16, price: 45 }),
+
+      //  Молочный коктейль Клубничный - 17
+      generateProductVariant({ productId: 17, price: 130 }),
+      //  Молочный коктейль Ванильный - 18
+      generateProductVariant({ productId: 18, price: 130 }),
+
+      //  Апельсиновый сок - 19
+      generateProductVariant({ productId: 19, price: 80 }),
+      //  Яблочный сок - 20
+      generateProductVariant({ productId: 20, price: 80 }),
+
+      //  Чай Lipton Зеленый в бутылке 0,5 л - 21
+      generateProductVariant({ productId: 21, price: 140 }),
+      //  Чай Lipton Лимон в бутылке 0,5 л - 22
+      generateProductVariant({ productId: 22, price: 140 }),
+
+      //  Эвервесс Кола в бутылке 0,5 л - 23
+      generateProductVariant({ productId: 23, price: 160 }),
+      //  Аква Минерале без газа 0,5 л - 24
+      generateProductVariant({ productId: 24, price: 100 }),
+      //  Аква Минерале с газом 0,5 л - 25
+      generateProductVariant({ productId: 25, price: 100 }),
+      //  Сок J7 яблочный 0,2 л - 26
+      generateProductVariant({ productId: 26, price: 100 }),
+
+      //  Кофе Глясe 0,2 л - 27
+      generateProductVariant({ productId: 27, price: 180 }),
+      //  Чай черный 0,2 л - 28
+      generateProductVariant({ productId: 28, price: 80 }),
+      //  Чай зеленый 0,2 л - 29
+      generateProductVariant({ productId: 29, price: 80 }),
+      //  Кофе Американо 0,2 л - 30
+      generateProductVariant({ productId: 30, price: 130 }),
+      //  Кофе Капучино 0,2 л - 31
+      generateProductVariant({ productId: 31, price: 160 }),
+
+      //  Картофель фри - 32
+      generateProductVariant({ productId: 32, price: 130 }),
+      //  Мороженое мягкое - 33
+      generateProductVariant({ productId: 33, price: 130 }),
     ],
   });
 
@@ -171,7 +245,7 @@ async function up() {
       cartId: 1, // первая в списке корзин
       quantity: 2,
       totalPrice: 0,
-      // это пицца, тесто стандарт, мини
+      // это шаурма, тесто стандарт, мини
       ingredients: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }] },
     },
   });

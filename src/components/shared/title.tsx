@@ -33,6 +33,6 @@ export const Title: React.FC<Props> = ({ className, size = 'sm', text }) => {
     {
       className: clsx(mapClassNameBySize[size], className),
     },
-    text
+    text[0].toUpperCase() + text.slice(1)
   );
 };

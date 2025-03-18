@@ -6,14 +6,16 @@ import { ChooseProductForm } from './choose-product-form';
 // import { useCartStore } from '@/shared/store';
 // import React from 'react';
 // import toast from 'react-hot-toast';
-// import { ChoosePizzaForm } from './choose-pizza-form';
-// import { ChooseProductForm } from './choose-product-form';
 
 interface Props {
   //   product: ProductWithRelations;
   //   onSubmit?: VoidFunction;
 
-  product: { imageUrl: string; name: string; price: string };
+  product: {
+    imageUrl: string;
+    name: string;
+    // price: string
+  };
 }
 
 export const ProductForm: React.FC<Props> = ({
@@ -68,7 +70,8 @@ export const ProductForm: React.FC<Props> = ({
       name={product.name}
       //   onSubmit={onSubmit}
       // price={firstItem.price}
-      price={Number(product.price)}
+      // price={Number(product.price)}
+      price={100}
       //   loading={loading}
     />
   );
