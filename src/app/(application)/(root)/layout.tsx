@@ -9,20 +9,16 @@ export const metadata: Metadata = {
 
 export default function ApplicationLayout({
   children,
-  // modal,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
-  // modal: React.ReactNode | never;
+  modal: React.ReactNode | never;
 }>) {
   return (
-    // <html lang='en' suppressHydrationWarning>
-    // <body className={nunito.className}>
     <main className='min-h-screen'>
       <Header />
       {children}
-      {/* {modal} */}
+      {modal}
     </main>
-    // </body>
-    // </html>
   );
 }

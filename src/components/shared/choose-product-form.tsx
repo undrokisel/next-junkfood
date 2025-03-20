@@ -3,7 +3,6 @@ import { cn } from '@/shared/lib/utils';
 import Image from 'next/image';
 import { Title } from './title';
 import { Button } from '../ui';
-import { GroupVariants } from './group-variants';
 
 interface Props {
   imageUrl: string;
@@ -49,25 +48,6 @@ export const ChooseProductForm: React.FC<Props> = ({
           rem voluptatem laborum voluptas quam id, totam nostrum corrupti
           dolorem?
         </p>
-
-        <GroupVariants
-          value='2'
-          variants={[
-            {
-              name: 'Мини',
-              value: '1',
-            },
-            {
-              name: 'Стандарт',
-              value: '2',
-            },
-            {
-              name: 'Богатырская',
-              value: '3',
-              disabled: true,
-            },
-          ]}
-        />
 
         <Button
           //   loading={loading}

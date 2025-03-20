@@ -17,3 +17,5 @@ export { CheckoutItemDetails } from './checkout-item-details';
 export { CheckoutAddressForm } from './checkout/checkout-address-form';
 export { CheckoutCart } from './checkout/checkout-cart';
 export { CheckoutItem } from './checkout-item';
+export { IngredientBadge } from './ingredient-badge';
+export * from './modals';
