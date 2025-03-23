@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import { Container, Header } from '@/components/shared';
+import { Container } from '@/components/shared';
+import { Header } from '@/components/shared/header';
 import '../../globals.css';
 
 export const metadata: Metadata = {
   title: ' | Корзина',
-  description: 'Корзина магазина бытрого питания',
+  description: 'Оформление заказа',
 };
 
 export default function CheckoutLayout({

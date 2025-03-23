@@ -7,19 +7,15 @@ import {
 } from '@/components/shared';
 import { cn } from '@/shared/lib/utils';
 import { Suspense } from 'react';
-import { prisma } from '../../../../prisma/prisma-client';
+import { findShaurma } from '@/shared/lib';
+import { GetSearchParams } from '@/shared/lib/find-shaurmas';
 
-export default async function Home() {
-  const categories = await prisma.category.findMany({
-    include: {
-      products: {
-        include: {
-          variants: true,
-          ingredients: true,
-        },
-      },
-    },
-  });
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: GetSearchParams;
+}) {
+  const categories = await findShaurma(searchParams);
 
   return (
     <div className='min-h-[1500px]'>
@@ -32,7 +28,7 @@ export default async function Home() {
 
       <Container className='mt-[40px]'>
         <div className='flex gap-[50px]'>
-          <Suspense fallback='<...Загрузка>'>
+          <Suspense>
             <Filters
               className={cn(`
               px-6

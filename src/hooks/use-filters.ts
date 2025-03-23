@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useSet } from 'react-use';
 
@@ -29,6 +29,7 @@ interface FiltersReturnProps extends Filters {
 
 export const useFilters = (): FiltersReturnProps => {
   const searchParams = useSearchParams();
+  // const searchParams = useSearchParams() as unknown as Map<keyof Filters, string>;
 
   //   Фильтр ингредиентов
   const [selectedIngredients, { toggle: toggleIngredients }] = useSet(
@@ -68,16 +69,20 @@ export const useFilters = (): FiltersReturnProps => {
   //     ingredients: Array.from(selectedIngredients),
   //   };
 
-  return {
-    // filters,
-    selectedSizes,
-    selectedDought,
-    selectedIngredients,
-    priceRange,
+  return useMemo(
+    () => ({
+      // filters,
+      selectedSizes,
+      selectedDought,
+      selectedIngredients,
+      priceRange,
 
-    setPriceRange: updateRangePrice,
-    toggleDought,
-    toggleSizes,
-    toggleIngredients,
-  };
+      setPriceRange: updateRangePrice,
+      toggleDought,
+      toggleSizes,
+      toggleIngredients,
+    }),
+    // eslint-disable-next-line
+    [selectedSizes, selectedDought, selectedIngredients, priceRange]
+  );
 };

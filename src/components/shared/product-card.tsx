@@ -4,6 +4,7 @@ import { cn } from '@/shared/lib/utils';
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import Image from 'next/image';
+import { Ingredient } from '@prisma/client';
 import { Title } from './title';
 import { Button } from '../ui';
 
@@ -22,15 +23,17 @@ export interface ProductCardProps {
   name: string;
   // description: string;
   price: number;
+  ingredients: Ingredient[];
   className?: string;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
-  name,
-  imageUrl,
-  // description,
   id,
+  name,
+  // description,
   price,
+  imageUrl,
+  ingredients,
   className,
 }) => {
   return (
@@ -52,6 +55,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
           {/* card-body */}
           <Title text={name} size='sm' className='mb-1 mt-3 font-bold' />
+          <p className='text-sm text-gray-400'>
+            {ingredients.map((ingredient) => ingredient.name).join(', ')}
+          </p>
           <p className='flex-grow-1 text-sm text-gray-400 flex-grow'>
             {/* {description} */}
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,

@@ -1,1 +1,9 @@
 export { calcTotalShaurmaPrice } from './calc-total-shaurma-price';
+export { getCartItemDetails } from './get-cart-item-details';
+export { getShaurmaDetails } from './get-shaurma-details';
+export { getCartDetails } from './get-cart-details';
+export { calcCartItemTotalPrice } from './calc-cart-item-total-price';
+export { updateCartTotalAmount } from './update-cart-total-amount';
+export { findOrCreateCart } from './find-or-create-cart';
+export { findShaurma } from './find-shaurmas';
+export { getAvailableShaurmaSizes } from './get-available-shaurma-sizes';

@@ -1,4 +1,4 @@
-export { Header } from './header';
+// export { Header } from './header';
 export { Container } from './container';
 export { Title } from './title';
 export { Categories } from './categories';
@@ -18,4 +18,9 @@ export { CheckoutAddressForm } from './checkout/checkout-address-form';
 export { CheckoutCart } from './checkout/checkout-cart';
 export { CheckoutItem } from './checkout-item';
 export { IngredientBadge } from './ingredient-badge';
+export { CartButton } from './cart-button';
+export { CartDrawer } from './cart-drawer';
+export { CountIconButton } from './count-icon-button';
+export { CountButton } from './count-button';
+
 export * from './modals';

@@ -1,13 +1,14 @@
-// 'use client';
+'use client';
 
 import { cn } from '@/shared/lib/utils';
 import React from 'react';
-import { ArrowRight, ShoppingCart, User } from 'lucide-react';
+import { User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '../ui/button';
-import { Container } from './container';
-import { SearchInput } from './search-input';
+import { Button } from '@/components/ui/button';
+import { SearchInput } from '@/components/shared/search-input';
+import { Container } from '@/components/shared/container';
+import { CartButton } from '@/components/shared/cart-button';
 
 interface Props {
   className?: string;
@@ -46,24 +47,8 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true }) => {
             <User size={16} />
             <span>Войти</span>
           </Button>
-          <Button className='group relative'>
-            <b>100 pуб</b>
-            {/* divider */}
-            <span className='h-full bg-secondary w-[1px] mx-2' />
-            <div className='flex gap-1 items-center transition duration-300 group-hover:opacity-0'>
-              <ShoppingCart strokeWidth={2} className='h-4 w-4 relative' />
-              <b>2</b>
-            </div>
-            <ArrowRight
-              className='w-5 absolute right-5 
-                            transition duration-300
-                            -translate-x-2 
-                            opacity-0 
-                            group-hover:opacity-100 
-                            group-hover:translate-x-0
-                            '
-            />
-          </Button>
+
+          <CartButton />
         </div>
       </Container>
     </header>

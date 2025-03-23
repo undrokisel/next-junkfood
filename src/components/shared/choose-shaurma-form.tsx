@@ -1,16 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import Image from 'next/image';
-import {
-  DoughType,
-  doughTypes,
-  mapDoughType,
-} from '@/shared/constants/shaurma';
+import { DoughType, doughTypes } from '@/shared/constants/shaurma';
 import { Ingredient, ProductVariant } from '@prisma/client';
-import { useSet } from 'react-use';
-import { calcTotalShaurmaPrice } from '@/shared/lib';
+import { getShaurmaDetails } from '@/shared/lib';
+import { useShaurmaOptions } from '@/hooks';
 import { Title } from './title';
 import { Button } from '../ui';
 import { GroupVariants } from './group-variants';
@@ -21,41 +17,46 @@ interface Props {
   name: string;
   ingredients: Ingredient[];
   variants: ProductVariant[];
-  onClickAddtoCart?: VoidFunction;
+
+  loading?: boolean;
+  onSubmit: (itemId: number, ingredients: number[]) => void;
+
   className?: string;
 }
 
+/**
+ * Форма выбора ШАУРМЫ
+ */
 export const ChooseShaurmaForm: React.FC<Props> = ({
-  imageUrl,
   name,
   variants,
+  imageUrl,
   ingredients,
-  onClickAddtoCart,
+  loading,
+  onSubmit,
   className,
 }) => {
-  //   const [size, setSize] = useState<ShaurmaSize>(2);
-  const [doughType, setDoughType] = useState<DoughType>(3);
+  const {
+    // size,
+    type,
+    selectedIngredients,
+    // availableSizes,
+    currentItemId,
+    // setSize,
+    setType,
+    addIngredient,
+  } = useShaurmaOptions(variants);
 
-  const [selectedIngredients, { toggle: toggleIngredient }] = useSet(
-    new Set<number>([])
-  );
-
-  const textDetails = `Классическая шаурма, ${mapDoughType[doughType].toLowerCase()} тесто`;
-
-  const totalPrice = calcTotalShaurmaPrice(
+  const { totalPrice, textDetails } = getShaurmaDetails(
+    type,
     variants,
-    doughType,
+    // size,
     ingredients,
     selectedIngredients
   );
 
   const handleClickAddToCart = () => {
-    onClickAddtoCart?.();
-    console.log({
-      doughType,
-      ingredients: selectedIngredients,
-      price: totalPrice,
-    });
+    if (currentItemId) onSubmit(currentItemId, Array.from(selectedIngredients));
   };
 
   return (
@@ -91,8 +92,8 @@ export const ChooseShaurmaForm: React.FC<Props> = ({
         <p className='text-gray-400 mt-2'>Тип теста</p>
         <GroupVariants
           variants={doughTypes}
-          value={String(doughType)}
-          onClick={(value) => setDoughType(Number(value) as DoughType)}
+          value={String(type)}
+          onClick={(value) => setType(Number(value) as DoughType)}
         />
 
         <p className='text-gray-400 mt-2'>Добавить по вкусу</p>
@@ -111,7 +112,7 @@ export const ChooseShaurmaForm: React.FC<Props> = ({
                   name={ingredientName}
                   imageUrl={ingredientImageUrl}
                   price={price}
-                  onClick={() => toggleIngredient(id)}
+                  onClick={() => addIngredient(id)}
                   active={selectedIngredients.has(id)}
                 />
               )
@@ -121,6 +122,7 @@ export const ChooseShaurmaForm: React.FC<Props> = ({
 
         <Button
           onClick={handleClickAddToCart}
+          loading={loading}
           className='h-[55px] px-10 text-base rounded-[18px] w-full mt-10'
         >
           Добавить в корзину за {totalPrice} ₽

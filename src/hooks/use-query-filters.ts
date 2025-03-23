@@ -19,5 +19,6 @@ export const useQueryFilters = (filters: Filters) => {
     });
 
     router.push(`?${query}`, { scroll: false });
-  }, [filters, router]);
+    // eslint-disable-next-line
+  }, [filters]);
 };

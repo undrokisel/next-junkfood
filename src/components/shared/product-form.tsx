@@ -1,78 +1,75 @@
 'use client';
 
+import React from 'react';
+import toast from 'react-hot-toast';
+import { useCartStore } from '@/store';
+import { ProductWithRelations } from '../../../@types/prisma';
 import { ChooseProductForm } from './choose-product-form';
-
-// import { ProductWithRelations } from '@/@types/prisma';
-// import { useCartStore } from '@/shared/store';
-// import React from 'react';
-// import toast from 'react-hot-toast';
+import { ChooseShaurmaForm } from './choose-shaurma-form';
 
 interface Props {
-  //   product: ProductWithRelations;
-  //   onSubmit?: VoidFunction;
+  product: ProductWithRelations;
+  onSubmit?: VoidFunction;
 
-  product: {
-    imageUrl: string;
-    name: string;
-    // price: string
-  };
+  // product: {
+  //   imageUrl: string;
+  //   name: string;
+  // price: string
+  // };
 }
 
 export const ProductForm: React.FC<Props> = ({
   product,
-  //   onSubmit: _onSubmit,
+  onSubmit: _onSubmit,
 }) => {
-  //   const [addCartItem, loading] = useCartStore((state) => [
-  //     state.addCartItem,
-  //     state.loading,
-  //   ]);
+  const addCartItem = useCartStore((state) => state.addCartItem);
+  const loading = useCartStore((state) => state.loading);
 
-  //   const firstItem = product.items[0];
-  //   const isPizzaForm = Boolean(firstItem.pizzaType);
+  const firstItem = product.variants[0];
+  const isShaurmaForm = Boolean(firstItem.doughType);
 
-  //   const onSubmit = async (
-  //     productItemId?: number,
-  //     ingredients?: number[]
-  //   ) => {
-  //     try {
-  //       const itemId = productItemId ?? firstItem.id;
+  const onSubmit = async (
+    productVariantId?: number,
+    ingredients?: number[]
+  ) => {
+    try {
+      const itemId = productVariantId ?? firstItem.id;
 
-  //       await addCartItem({
-  //         productItemId: itemId,
-  //         ingredients,
-  //       });
+      await addCartItem({
+        productVariantId: itemId,
+        ingredients,
+      });
 
-  //       toast.success(product.name + ' добавлена в корзину');
+      // eslint-disable-next-line
+      toast.success('Товар ' + product.name + ' добавлен в корзину');
 
-  //       _onSubmit?.();
-  //     } catch (err) {
-  //       toast.error('Не удалось добавить товар в корзину');
-  //       console.error(err);
-  //     }
-  //   };
+      _onSubmit?.();
+    } catch (err) {
+      toast.error('Не удалось добавить товар в корзину');
+      // eslint-disable-next-line
+      console.error(err);
+    }
+  };
 
-  //   if (isPizzaForm) {
-  //     return (
-  //       <ChoosePizzaForm
-  //         imageUrl={product.imageUrl}
-  //         name={product.name}
-  //         ingredients={product.ingredients}
-  //         items={product.items}
-  //         onSubmit={onSubmit}
-  //         loading={loading}
-  //       />
-  //     );
-  //   }
+  if (isShaurmaForm)
+    return (
+      <ChooseShaurmaForm
+        imageUrl={product.imageUrl}
+        name={product.name}
+        ingredients={product.ingredients}
+        variants={product.variants}
+        onSubmit={onSubmit}
+        loading={loading}
+      />
+    );
 
   return (
     <ChooseProductForm
       imageUrl={product.imageUrl}
       name={product.name}
-      //   onSubmit={onSubmit}
-      // price={firstItem.price}
-      // price={Number(product.price)}
-      price={100}
-      //   loading={loading}
+      onSubmit={onSubmit}
+      price={firstItem.price}
+      loading={loading}
     />
   );
 };

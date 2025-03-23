@@ -4,24 +4,25 @@ import React, { useEffect, useRef } from 'react';
 import { cn } from '@/shared/lib/utils';
 // eslint-disable-next-line
 import { useIntersection } from 'react-use';
-import { Product, ProductCard } from './product-card';
+import { ProductCard } from './product-card';
 import { Title } from './title';
 import { useCategoryStore } from '../../store/category';
+import { ProductWithRelations } from '../../../@types/prisma';
 
 interface ProductsGroupListProps {
-  products: Product[];
-  categoryId: number;
   title: string;
+  products: ProductWithRelations[];
+  categoryId: number;
   className?: string;
   listClassName?: string;
 }
 
 export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
-  products,
-  className,
-  categoryId,
   title,
+  products,
   listClassName,
+  categoryId,
+  className,
 }) => {
   const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
   const intersectionRef = useRef(null);
@@ -31,7 +32,8 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
 
   useEffect(() => {
     if (intersection?.isIntersecting) setActiveCategoryId(categoryId);
-  }, [categoryId, intersection?.isIntersecting, title, setActiveCategoryId]);
+    // eslint-disable-next-line
+  }, [categoryId, intersection?.isIntersecting, title]);
 
   return (
     <section className={cn(className)} ref={intersectionRef} id={title}>
@@ -41,11 +43,12 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
           return (
             <ProductCard
               key={`product-${index}`}
-              name={product.name}
-              // description={product.description}
-              price={product.variants[0].price}
-              imageUrl={product.imageUrl}
               id={product.id}
+              name={product.name}
+              imageUrl={product.imageUrl}
+              price={product.variants[0].price}
+              ingredients={product.ingredients}
+              // description={product.description}
             />
           );
         })}

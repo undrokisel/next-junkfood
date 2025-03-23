@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../../globals.css';
 import { Header } from '@/components/shared/header';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Твоя Shaurma',
@@ -12,11 +13,13 @@ export default function ApplicationLayout({
   modal,
 }: Readonly<{
   children: React.ReactNode;
-  modal: React.ReactNode | never;
+  modal: React.ReactNode;
 }>) {
   return (
     <main className='min-h-screen'>
-      <Header />
+      <Suspense>
+        <Header />
+      </Suspense>
       {children}
       {modal}
     </main>
