@@ -41,5 +41,9 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     // eslint-disable-next-line
     console.log('[VERIFY_GET] Server error', error);
+    return NextResponse.json(
+      { message: '[VERIFY_GET] Server error' },
+      { status: 500 }
+    );
   }
 }
