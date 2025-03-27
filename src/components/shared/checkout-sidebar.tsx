@@ -5,7 +5,7 @@ import { WhiteBlock } from './white-block';
 import { CheckoutItemDetails } from './checkout-item-details';
 import { Button, Skeleton } from '../ui';
 
-const VAT = 15;
+const VAT = 0;
 const DELIVERY_PRICE = 250;
 
 interface Props {
@@ -54,7 +54,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
         title={
           <div className='flex items-center'>
             <Percent size={18} className='mr-2 text-gray-400' />
-            Налоги:
+            налоги:
           </div>
         }
         value={
@@ -82,7 +82,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
       />
 
       <Button
-        // loading={loading}
+        loading={loading}
         type='submit'
         className='w-full h-14 rounded-2xl mt-6 text-base font-bold'
       >

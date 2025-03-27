@@ -1,21 +1,51 @@
 'use client';
 
 import { cn } from '@/shared/lib/utils';
-import React from 'react';
-import { User } from 'lucide-react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { SearchInput } from '@/components/shared/search-input';
 import { Container } from '@/components/shared/container';
 import { CartButton } from '@/components/shared/cart-button';
+import { useRouter, useSearchParams } from 'next/navigation';
+import toast from 'react-hot-toast';
+import { AuthModal } from './modals/auth-modal/auth-modal';
+import { ProfileButton } from './profile-button';
 
 interface Props {
-  className?: string;
   hasSearch?: boolean;
+  hasCart?: boolean;
+  className?: string;
 }
 
-export const Header: React.FC<Props> = ({ className, hasSearch = true }) => {
+export const Header: React.FC<Props> = ({
+  hasSearch = true,
+  hasCart = true,
+  className,
+}) => {
+  const router = useRouter();
+  const [openAuthModal, setOpenAuthModal] = React.useState(false);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    let toastMessage = '';
+    if (searchParams.has('paid'))
+      toastMessage = 'Заказ успешно оплачен! Информация отправлена на почту.';
+
+    if (searchParams.has('verified'))
+      toastMessage = 'Почта успешно подтверждена!';
+
+    if (toastMessage)
+      setTimeout(() => {
+        router.replace('/');
+        toast.success(toastMessage, {
+          duration: 3000,
+        });
+      }, 500);
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <header className={cn('border border-b-2 ', className)}>
       <Container className='flex justify-between items-center py-7 px-2'>
@@ -43,12 +73,14 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true }) => {
 
         {/* header button block */}
         <div className='flex justify-between gap-2'>
-          <Button variant='outline' className='flex items-center gap-1'>
-            <User size={16} />
-            <span>Войти</span>
-          </Button>
+          <AuthModal
+            open={openAuthModal}
+            onClose={() => setOpenAuthModal(false)}
+          />
 
-          <CartButton />
+          <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
+
+          {hasCart && <CartButton />}
         </div>
       </Container>
     </header>

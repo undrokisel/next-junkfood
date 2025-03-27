@@ -14,13 +14,16 @@ export { Filters } from './filters';
 export { ProductCard } from './product-card';
 export { CheckoutSidebar } from './checkout-sidebar';
 export { CheckoutItemDetails } from './checkout-item-details';
-export { CheckoutAddressForm } from './checkout/checkout-address-form';
-export { CheckoutCart } from './checkout/checkout-cart';
 export { CheckoutItem } from './checkout-item';
 export { IngredientBadge } from './ingredient-badge';
 export { CartButton } from './cart-button';
 export { CartDrawer } from './cart-drawer';
 export { CountIconButton } from './count-icon-button';
 export { CountButton } from './count-button';
+export { CheckoutItemSkeleton } from './checkout-item-skeleton';
+export { WhiteBlock } from './white-block';
+export { InfoBlock } from './info-block';
 
 export * from './modals';
+export * from './checkout';
+export * from './form';

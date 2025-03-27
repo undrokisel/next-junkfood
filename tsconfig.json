@@ -22,6 +22,13 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    // дополнительные типы в папке @types, которые переопределяют типы из библиотек
+    "@types/*.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

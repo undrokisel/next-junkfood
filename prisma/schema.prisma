@@ -15,7 +15,10 @@ model User {
     email    String @unique
     password String
 
-    role     UserRole  @default(USER)
+    role UserRole @default(USER)
+
+    // подтверждение пользователя
+    // в т.ч. после аутентификации через соцсети (OAuth)
     verified DateTime?
 
     //для отслеживания пользователя, зашедшего через социальную сеть
@@ -200,14 +203,14 @@ model Order {
     status OrderStatus @default(PENDING)
 
     // способ оплаты - картой - кэш
-    paymentType PaymentType
+    // paymentType PaymentType
 
     // ссылка на оплату от сервиса приема платежей
     // необходимо также для кейсов возврата платежей 
     paymentId String?
 
     // способ получения - курьер - самовывоз
-    deliveryType DeliveryType
+    // deliveryType DeliveryType
 
     // информация для выдачи/курьера
     fullName String
@@ -226,15 +229,15 @@ enum OrderStatus {
     CANCELLED
 }
 
-enum DeliveryType {
-    DELIVERY
-    BYSELF
-}
+// enum DeliveryType {
+//     DELIVERY
+//     BYSELF
+// }
 
-enum PaymentType {
-    CASH
-    CARD
-}
+// enum PaymentType {
+//     CASH
+//     CARD
+// }
 
 enum UserRole {
     ADMIN
@@ -248,7 +251,7 @@ model VerificationCode {
     user   User @relation(fields: [userId], references: [id])
     userId Int  @unique
 
-    code String
+    code      String
     // expiresAt DateTime @default(now())
     createdAt DateTime @default(now())
 }
@@ -274,3 +277,17 @@ model VerificationCode {
 
 //     ingredients Ingredient[]
 // }
+model Story {
+    id Int @id @default(autoincrement())
+    previewImageUrl String
+    items StoryItem[]
+    createdAt DateTime @default(now())
+}
+
+model StoryItem {
+    id Int @id @default(autoincrement())
+    storyId Int
+    story Story @relation(fields: [storyId], references: [id])
+    sourceUrl String
+    createdAt DateTime @default(now())
+}

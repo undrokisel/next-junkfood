@@ -249,6 +249,35 @@ async function up() {
       ingredients: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }] },
     },
   });
+
+  // сиды для сторис
+  await prisma.story.createMany({
+    data: [
+      { previewImageUrl: 'images/products/combo/boxf_fly.avif' },
+      { previewImageUrl: 'images/products/combo/box_pieces.avif' },
+      { previewImageUrl: 'images/products/rolls/roll1.png' },
+      { previewImageUrl: 'images/products/rolls/roll2.png' },
+      { previewImageUrl: 'images/products/burgers/cheeseburger.webp' },
+      { previewImageUrl: 'images/products/burgers/gumburger.webp' },
+      { previewImageUrl: 'images/products/chicken/fly.webp' },
+      { previewImageUrl: 'images/products/chicken/strips.webp' },
+      { previewImageUrl: 'images/products/chicken/nuggets.webp' },
+    ],
+  });
+
+  await prisma.storyItem.createMany({
+    data: [
+      { storyId: 1, sourceUrl: 'images/products/combo/boxf_fly.avif' },
+      { storyId: 1, sourceUrl: 'images/products/combo/box_pieces.avif' },
+      { storyId: 1, sourceUrl: 'images/products/rolls/roll1.png' },
+      { storyId: 1, sourceUrl: 'images/products/rolls/roll2.png' },
+      { storyId: 1, sourceUrl: 'images/products/burgers/cheeseburger.webp' },
+      { storyId: 1, sourceUrl: 'images/products/burgers/gumburger.webp' },
+      { storyId: 1, sourceUrl: 'images/products/chicken/fly.webp' },
+      { storyId: 1, sourceUrl: 'images/products/chicken/strips.webp' },
+      { storyId: 1, sourceUrl: 'images/products/chicken/nuggets.webp' },
+    ],
+  });
 }
 
 async function down() {
@@ -266,6 +295,7 @@ async function main() {
     await down();
     await up();
   } catch (e) {
+    // eslint-disable-next-line
     console.error(e);
   }
 }
@@ -275,6 +305,7 @@ main()
     await prisma.$disconnect();
   })
   .catch(async (err) => {
+    // eslint-disable-next-line
     console.error(err);
     await prisma.$disconnect();
     process.exit(1);

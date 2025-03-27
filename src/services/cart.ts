@@ -2,7 +2,7 @@ import { axiosInstance } from './instance';
 import { CartDTO, CreateCartItemValues } from './dto/cart.dto';
 
 export const getCart = async (): Promise<CartDTO> => {
-  return (await axiosInstance.get<CartDTO>('/api/cart')).data;
+  return (await axiosInstance.get<CartDTO>('/cart')).data;
 };
 
 export const updateItemQuantity = async (
@@ -11,18 +11,17 @@ export const updateItemQuantity = async (
 ): Promise<CartDTO> => {
   return (
     // eslint-disable-next-line
-    (await axiosInstance.patch<CartDTO>('/api/cart/' + itemId, { quantity }))
-      .data
+    (await axiosInstance.patch<CartDTO>('/cart/' + itemId, { quantity })).data
   );
 };
 
 export const removeCartItem = async (id: number): Promise<CartDTO> => {
   // eslint-disable-next-line
-  return (await axiosInstance.delete<CartDTO>('/api/cart/' + id)).data;
+  return (await axiosInstance.delete<CartDTO>('/cart/' + id)).data;
 };
 
 export const addCartItem = async (
   values: CreateCartItemValues
 ): Promise<CartDTO> => {
-  return (await axiosInstance.post<CartDTO>('/api/cart', values)).data;
+  return (await axiosInstance.post<CartDTO>('/cart', values)).data;
 };

@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Запустить изменения в призму в соответствии со схемой и сидерами:
+npm run prisma:push --seed
+Предварительно проект не должен быть запущен
 
-## Getting Started
+При развертывании:
 
-First, run the development server:
+- в платежном сервисе указать куда будет приходить callback:
+  {адрес_сайта}/api/callback
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- зайти в каждый используемый провайдер авторизации (Google, VK, Yandex, Github)
+  и создать приложения для авторизации, указать в них URL сайта.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* указать адрес для callback-ов авторизации - для гитхаба -
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- {адрес сайта}/api/auth/callback/github
+  Оттуда же получить ключи и вставить в .env
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Google
+https://console.cloud.google.com/apis/dashboard
+там выбрать действующий проект или создать новый
+примерно credentials -> oath -> заполнить форму, external
+после заполнения формы - Create OAuth client ID
+Web application
+и уже вот здесь:
+Authorized redirect URIs - указать адрес для колбека
+для локалки будет:
+http://localhost:3000/api/auth/callback/google
+в итоге необходимо получить client_id и clien_secret
 
-## Learn More
+todo:
 
-To learn more about Next.js, take a look at the following resources:
+- поправить малые изображения (корзины и т.д.)
+- отступы
+- адаптив
+- добавить провайдеров авторизации ВК и Яндекс
+- полноценный почтовый домен
+- личный кабинет с историей заказов
+- ошибки консоли
+- ошибки аутентификации
+- личный кабинет доделать
+- подкрутить стили и размеры, скролл модальных окон
+- доделать истории, поставить интересные картинки, разнообразить текст и рекламные предложения
+- сортировка товаров
+- письмо об оплате не приходит
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+функции:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- logout|signOut
 
-## Deploy on Vercel
+- сделать документацию для пользователей и заказчика
+- написать тестирование
+- доделать ТЗ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- админку
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+страницы:
+
+- сделать 404
+- страница акций
+- страница о компании
+- страница персонала
+
+призма:
+
+- сделать записи provider, providerId не виде строк, а виде массива (JSON?)
+
+логика авторизации:
+
+- если зашел через социальные сети (OAuth), то пароль не нужен? сделать опциональным?
+- поправить багу при авторизации (в общем то не работает, error "CredentialsSignin")

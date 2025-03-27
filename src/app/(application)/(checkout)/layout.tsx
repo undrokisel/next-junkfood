@@ -20,7 +20,7 @@ export default function CheckoutLayout({
         <Suspense>
           <Header
             hasSearch={false}
-            // hasCart={false}
+            hasCart={false}
             className='border-b-gray-200'
           />
         </Suspense>

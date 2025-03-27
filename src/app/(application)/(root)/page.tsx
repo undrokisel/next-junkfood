@@ -9,6 +9,7 @@ import { cn } from '@/shared/lib/utils';
 import { Suspense } from 'react';
 import { findShaurma } from '@/shared/lib';
 import { GetSearchParams } from '@/shared/lib/find-shaurmas';
+import { Stories } from '../../../components/shared/stories';
 
 export default async function Home({
   searchParams,
@@ -22,6 +23,9 @@ export default async function Home({
       <TopBar
         categories={categories.filter((cat) => cat.products.length > 0)}
       />
+
+      <Stories />
+
       <Container className='mt-10'>
         <Title size='lg' text='Весь ассортимент' className='ml-6' />
       </Container>

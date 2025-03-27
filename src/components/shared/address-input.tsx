@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useId } from 'react';
 import { AddressSuggestions } from 'react-dadata';
 import 'react-dadata/dist/react-dadata.css';
 
@@ -9,10 +9,12 @@ interface Props {
 }
 
 export const AdressInput: React.FC<Props> = ({ onChange }) => {
+  const id = useId();
   return (
     <AddressSuggestions
-      token='b5b8bb983ddcd08648080e0271d9dd367bb7aa65'
+      token={`${process.env.NEXT_PUBLIC_DADATA_API_KEY}`}
       onChange={(data) => onChange?.(data?.value)}
+      uid={id}
     />
   );
 };

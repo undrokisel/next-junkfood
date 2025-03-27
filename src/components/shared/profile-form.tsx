@@ -1,29 +1,28 @@
 'use client';
 
-// import { zodResolver } from '@hookform/resolvers/zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-// import {
-//   TFormRegisterValues,
-//   formRegisterSchema,
-// } from './modals/auth-modal/forms/schemas';
-// import { User } from '@prisma/client';
-// import toast from 'react-hot-toast';
-// import { signOut } from 'next-auth/react';
+import toast from 'react-hot-toast';
+import { signOut } from 'next-auth/react';
+import { updateUserInfo } from '@/app/actions';
+import { User } from '@prisma/client';
 import { Container } from './container';
 import { Title } from './title';
 import { FormInput } from './form/form-input';
 import { Button } from '../ui';
-// import { updateUserInfo } from '@/app/actions';
+import {
+  formRegisterSchema,
+  RegisterFormValues,
+} from './modals/auth-modal/forms/schemas';
 
 interface Props {
-  //   data: User;
-  data: any;
+  data: User;
 }
 
 export const ProfileForm: React.FC<Props> = ({ data }) => {
   const form = useForm({
-    // resolver: zodResolver(formRegisterSchema),
+    resolver: zodResolver(formRegisterSchema),
     defaultValues: {
       fullName: data.fullName,
       email: data.email,
@@ -32,35 +31,35 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
     },
   });
 
-  //   const onSubmit = async (data: TFormRegisterValues) => {
-  //     try {
-  //       await updateUserInfo({
-  //         email: data.email,
-  //         fullName: data.fullName,
-  //         password: data.password,
-  //       });
+  const onSubmit = async (dataOnSubmit: RegisterFormValues) => {
+    try {
+      await updateUserInfo({
+        email: dataOnSubmit.email,
+        fullName: dataOnSubmit.fullName,
+        password: dataOnSubmit.password,
+      });
+      return toast.error('Данные обновлены 📝', {
+        icon: '✅',
+      });
+    } catch (error) {
+      // eslint-disable-next-line
+      console.log(`[USER_UPDATE]: ${error}`);
+      return toast.error('Ошибка при обновлении данных', {
+        icon: '❌',
+      });
+    }
+  };
 
-  //       toast.error('Данные обновлены 📝', {
-  //         icon: '✅',
-  //       });
-  //     } catch (error) {
-  //       return toast.error('Ошибка при обновлении данных', {
-  //         icon: '❌',
-  //       });
-  //     }
-  //   };
-
-  //   const onClickSignOut = () => {
-  //     signOut({
-  //       callbackUrl: '/',
-  //     });
-  //   };
+  const onClickSignOut = () => {
+    signOut({
+      callbackUrl: '/',
+    });
+  };
 
   return (
     <Container className='my-10'>
       <Title
-        // text={`Личные данные | #${data.id}`}
-        text='Личные данные | Андрей'
+        text={`Личные данные | #${data.id}`}
         size='lg'
         className='font-bold text-center'
       />
@@ -68,10 +67,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
       <FormProvider {...form}>
         <form
           className='flex flex-col gap-5 w-96 mt-10  mx-auto'
-          // onSubmit={
-          // console.log('submit')
-          // form.handleSubmit(onSubmit)
-          // }
+          onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormInput name='email' label='E-Mail' required />
           <FormInput name='fullName' label='Полное имя' required />
@@ -98,7 +94,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
           </Button>
 
           <Button
-            // onClick={onClickSignOut}
+            onClick={onClickSignOut}
             variant='secondary'
             disabled={form.formState.isSubmitting}
             className='text-base'
