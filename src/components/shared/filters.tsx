@@ -22,7 +22,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
   };
 
   const ingredientsItems = ingredients.map((item) => ({
-    text: item.name,
+    // text: item.name,
+    text: item.name.toLowerCase(),
     value: String(item.id),
   }));
 
@@ -97,7 +98,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
       {/* ingridients bottom */}
       <CheckboxFilterGroup
-        title='Ингридиенты: '
+        title='Ингредиенты: '
         items={ingredientsItems}
         defaultItems={ingredientsItems.slice(0, 6)}
         className='mt-5'

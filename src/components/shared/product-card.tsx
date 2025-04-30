@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import Image from 'next/image';
 import { Ingredient } from '@prisma/client';
+import { descriptions } from '@/shared/constants/descriptions/product-description';
 import { Title } from './title';
 import { Button } from '../ui';
 
@@ -36,6 +37,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   ingredients,
   className,
 }) => {
+  const productDescriptions = descriptions;
+
   return (
     <article className={cn(`min-h-[100%]`, className)}>
       <Link href={`/product/${id}`}>
@@ -60,10 +63,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </p>
           <p className='flex-grow-1 text-sm text-gray-400 flex-grow'>
             {/* {description} */}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
+            {productDescriptions[Number(id) - 1]}
+            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
             dolore dolorem. Temporibus quasi quam quibusdam impedit sequi dolore
             iste. Non dolores impedit, esse reprehenderit doloribus natus quis?
-            Aperiam, cupiditate quis.
+            Aperiam, cupiditate quis. */}
           </p>
 
           {/* card-footer */}

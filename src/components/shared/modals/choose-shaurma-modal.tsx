@@ -29,6 +29,7 @@ export const ChooseShaurmaModal: React.FC<Props> = ({ product, className }) => {
           imageUrl={product.imageUrl}
           name={product.name}
           price={100}
+          productId={product.id}
           // ingredients={[]}
         />
       </DialogContent>

@@ -5,8 +5,8 @@ import { Container } from '../../../components/shared/container';
 
 function Start() {
   return (
-    <Container className=' flex min-h-screen justify-center text-lg'>
-      <div className='bg-green-100 rounded-3xl p-10 m-10 min-h-[60vh] flex flex-col text-center gap-4'>
+    <Container className=' flex min-h-screen justify-center text-lg '>
+      <div className='bg-green-100 rounded-3xl p-10 m-10 min-h-[60vh] flex flex-col text-center gap-4 flex-grow'>
         <Title
           size='lg'
           text='Веб-приложение для сети ресторанов быстрого питания'
@@ -14,14 +14,19 @@ function Start() {
         />
         <Title size='lg' text='&ldquo;Твоя Шаурма&ldquo;' className='ml-6' />
 
-        <div className='mt-20 flex-grow'>
-          <p>Уважаемый пользователь!</p>
-          <p>
-            Представляю вашему вниманию веб-приложение для сети ресторанов
-            быстрого питания &ldquo;Твоя Шаурма&ldquo;
-          </p>
-          <Button className='mt-8 '>
-            <Link href='/'>Переход на главную</Link>
+        <div className='mt-20 flex-grow content-center'>
+          <div className='mb-10'>
+            <p className='text-[28px] mb-8'>Уважаемый пользователь!</p>
+            <p className='text-[28px]'>Представляю Вашему вниманию</p>
+            <p className='text-[28px]'>
+              веб-приложение для сети ресторанов быстрого питания
+            </p>
+            <p className='text-[28px]'>&ldquo;Твоя Шаурма&ldquo;</p>
+          </div>
+          <Button className='mt-8 p-12'>
+            <Link href='/' className='text-[32px]'>
+              Переход на главную страницу сайта
+            </Link>
           </Button>
         </div>
 

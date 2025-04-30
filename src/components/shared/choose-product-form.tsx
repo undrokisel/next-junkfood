@@ -1,11 +1,13 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
+import { descriptions } from '@/shared/constants/descriptions/product-description';
 import Image from 'next/image';
 import { Title } from './title';
 import { Button } from '../ui';
 
 interface Props {
   imageUrl: string;
+  productId: string | number;
   name: string;
   price: number;
   loading?: boolean;
@@ -23,7 +25,10 @@ export const ChooseProductForm: React.FC<Props> = ({
   onSubmit,
   className,
   loading,
+  productId,
 }) => {
+  const productDescriptions = descriptions;
+
   return (
     <div className={cn(className, 'flex flex-1 flex-wrap gap-4')}>
       <div className='flex items-center justify-center flex-1 relative w-full'>
@@ -46,10 +51,11 @@ export const ChooseProductForm: React.FC<Props> = ({
         />
 
         <p className='text-gray-400'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid rerum
+          {productDescriptions[Number(productId) - 1]}
+          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid rerum
           unde ipsum error ducimus explicabo quidem sequi debitis. Quae optio
           rem voluptatem laborum voluptas quam id, totam nostrum corrupti
-          dolorem?
+          dolorem? */}
         </p>
 
         <Button

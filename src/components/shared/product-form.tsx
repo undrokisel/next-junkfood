@@ -65,6 +65,7 @@ export const ProductForm: React.FC<Props> = ({
 
   return (
     <ChooseProductForm
+      productId={product.id}
       imageUrl={product.imageUrl}
       name={product.name}
       onSubmit={onSubmit}

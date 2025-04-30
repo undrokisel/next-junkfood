@@ -63,7 +63,7 @@ export const Header: React.FC<Props> = ({
             </picture>
             <div className='flex flex-col'>
               <h1 className='uppercase text-2xl font-black'>Твоя шаурма</h1>
-              <p className='text-gray-400 leading-3 text-sm'>И только твоя</p>
+              <p className='text-gray-400 leading-3 text-sm'>И только Твоя</p>
             </div>
           </div>
         </Link>

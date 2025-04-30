@@ -64,10 +64,10 @@ export const Categories: React.FC<Props> = ({ categories, className }) => {
             {dropdownSlice.map((category, index) => (
               <OtherPopup
                 key={index}
-                text={category.name}
+                text={`${category.name[0].toUpperCase()}${category.name.slice(1)}`}
                 categoryId={category.id}
                 href={`/#${category.name}`}
-                className='capitalize my-1'
+                className='my-1 '
               />
             ))}
           </PopoverContent>
