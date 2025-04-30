@@ -3,6 +3,7 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { useIngredients, useFilters, useQueryFilters } from '@/hooks';
+import { useWindowSize } from 'react-use';
 import { Title } from './title';
 import { Input, Slider } from '../ui';
 import { CheckboxFilterGroup } from './checkbox-filter-group';
@@ -12,9 +13,12 @@ interface Props {
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+  const { width } = useWindowSize();
   const { ingredients, ingredientsLoading } = useIngredients();
   const filters = useFilters();
   useQueryFilters(filters);
+
+  if (width < 600) return null;
 
   const updatePriceRange = (prices: number[]) => {
     filters.setPriceRange('priceFrom', prices[0]);

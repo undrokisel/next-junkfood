@@ -44,19 +44,16 @@ export const ChooseProductForm: React.FC<Props> = ({
       </div>
 
       <div className='w-[490px] bg-[#f7f6f5] p-7 flex flex-col  flex-grow md:flex-grow-0'>
-        <Title
-          text={name}
-          size='md'
-          className='font-extrabold mb-1 flex-grow'
-        />
-
-        <p className='text-gray-400'>
-          {productDescriptions[Number(productId) - 1]}
-          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid rerum
+        <Title text={name} size='lg' className='font-extrabold mb-1' />
+        <div className='flex-grow content-start'>
+          <p className='text-gray-600 '>
+            {productDescriptions[Number(productId) - 1]}
+            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid rerum
           unde ipsum error ducimus explicabo quidem sequi debitis. Quae optio
           rem voluptatem laborum voluptas quam id, totam nostrum corrupti
           dolorem? */}
-        </p>
+          </p>
+        </div>
 
         <Button
           loading={loading}

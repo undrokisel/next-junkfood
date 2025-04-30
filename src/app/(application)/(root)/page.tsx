@@ -41,7 +41,7 @@ export default async function Home({
             />
           </Suspense>
 
-          <div className='flex flex-col gap-16'>
+          <div className='flex flex-col gap-16 mb-4 ml-4'>
             {categories.map(
               (category) =>
                 category.products.length > 0 && (

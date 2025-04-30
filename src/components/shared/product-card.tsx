@@ -73,10 +73,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* card-footer */}
           <div className='flex justify-between mt-4 items-center'>
             <span className='text-[20px]'>
-              от <b>{price} р.</b>
+              {/* от  */}
+              <b>{price} р.</b>
             </span>
 
-            <Button variant='secondary' className='text-base font-bold'>
+            <Button variant='secondary' className='text-base font-bold p-0'>
               <Plus size={20} className='mr-1' />
               Добавить
             </Button>

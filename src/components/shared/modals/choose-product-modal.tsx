@@ -3,7 +3,7 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { useRouter } from 'next/navigation';
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ProductWithRelations } from '../../../../@types/prisma';
 import { ProductForm } from '../product-form';
 
@@ -23,7 +23,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           className
         )}
       >
-        <DialogTitle />
+        {/* <DialogTitle /> */}
         <ProductForm product={product} onSubmit={() => router.back()} />
       </DialogContent>
     </Dialog>

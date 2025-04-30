@@ -1,9 +1,9 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Categories, Category } from './categories';
-import { Popover } from '../ui';
-import { PopoverContent, PopoverTrigger } from '../ui/popover';
-import { SortPopup } from './sort-popup';
+// import { Popover } from '../ui';
+// import { PopoverContent, PopoverTrigger } from '../ui/popover';
+// import { SortPopup } from './sort-popup';
 import { Container } from './container';
 
 interface Props {
@@ -22,14 +22,14 @@ export const TopBar: React.FC<Props> = ({ categories, className }) => {
       <Container className='flex justify-between items-center'>
         <Categories categories={categories} />
 
-        <Popover>
+        {/* <Popover>
           <PopoverTrigger>
             <SortPopup sortBy='популярные' />
           </PopoverTrigger>
           <PopoverContent>
             <SortPopup sortBy='популярные' />
           </PopoverContent>
-        </Popover>
+        </Popover> */}
       </Container>
     </div>
   );

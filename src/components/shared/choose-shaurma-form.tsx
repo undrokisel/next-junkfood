@@ -76,11 +76,12 @@ export const ChooseShaurmaForm: React.FC<Props> = ({
       <div className='w-[490px] bg-[#f7f6f5] p-7'>
         <Title
           text={name}
-          size='md'
+          // size='md'
+          size='lg'
           className='font-extrabold mb-1 flex-grow'
         />
 
-        <p className='text-gray-400'>{textDetails}</p>
+        <p className='text-gray-600'>{textDetails}</p>
 
         {/* <p className='text-gray-400 mt-8'>Размер</p>
         <GroupVariants
@@ -89,14 +90,14 @@ export const ChooseShaurmaForm: React.FC<Props> = ({
           onClick={(value) => setSize(Number(value) as ShaurmaSize)}
         /> */}
 
-        <p className='text-gray-400 mt-2'>Тип теста</p>
+        <p className='text-gray-600 mt-2'>Тип теста</p>
         <GroupVariants
           variants={doughTypes}
           value={String(type)}
           onClick={(value) => setType(Number(value) as DoughType)}
         />
 
-        <p className='text-gray-400 mt-2'>Добавить по вкусу</p>
+        <p className='text-gray-600 mt-2'>Добавить по вкусу</p>
 
         <div className='bg-gray-50 p-5 rounded-md max-h-[200px] overflow-auto scrollbar scroolbar'>
           <div className='grid grid-cols-3 gap-3 mt-1'>

@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { ArrowUpDown } from 'lucide-react';
+import { useWindowSize } from 'react-use';
 import { useCategoryStore } from '../../store/category';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { OtherPopup } from './other-popup';
@@ -17,15 +18,35 @@ interface Props {
 }
 
 export const Categories: React.FC<Props> = ({ categories, className }) => {
+  const [maxBarLength, setMaxBarLength] = useState(6);
+  const [barSlice, setBarSlice] = useState<Category[]>([]);
+  const [dropdownSlice, setDropdownSlice] = useState<Category[]>([]);
+
   const categoryActiveId = useCategoryStore((state) => state.activeId);
 
-  let barSlice;
-  let dropdownSlice;
-  const maxBarLength = 6;
-  if (categories.length > maxBarLength) {
-    barSlice = categories.slice(0, maxBarLength);
-    dropdownSlice = categories.slice(maxBarLength, categories.length);
-  }
+  const { width } = useWindowSize();
+  // if (categories.length > maxBarLength) {
+  //   barSlice = categories.slice(0, maxBarLength);
+  //   dropdownSlice = categories.slice(maxBarLength, categories.length);
+  // }
+
+  useEffect(() => {
+    setBarSlice(categories.slice(0, maxBarLength));
+    setDropdownSlice(categories.slice(maxBarLength, categories.length));
+  }, [maxBarLength, categories]);
+
+  useEffect(() => {
+    const getMaxBarValue = (w: number) => {
+      if (w > 900) return 7;
+      if (w > 750) return 6;
+      if (w > 650) return 5;
+      if (w > 550) return 4;
+      if (w > 450) return 3;
+      if (w > 350) return 2;
+      return 1;
+    };
+    setMaxBarLength(getMaxBarValue(width));
+  }, [width]);
 
   return (
     <ul
