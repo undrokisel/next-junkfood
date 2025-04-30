@@ -9,6 +9,7 @@ import { Container } from '@/components/shared/container';
 import { CartButton } from '@/components/shared/cart-button';
 import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
+import { useWindowSize } from 'react-use';
 import { AuthModal } from './modals/auth-modal/auth-modal';
 import { ProfileButton } from './profile-button';
 
@@ -26,6 +27,7 @@ export const Header: React.FC<Props> = ({
   const router = useRouter();
   const [openAuthModal, setOpenAuthModal] = React.useState(false);
   const searchParams = useSearchParams();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     let toastMessage = '';
@@ -48,10 +50,13 @@ export const Header: React.FC<Props> = ({
 
   return (
     <header className={cn('border border-b-2 ', className)}>
-      <Container className='flex justify-between items-center py-7 px-2'>
+      <Container className='flex justify-between items-center py-7 px-2 flex-wrap'>
         {/* logo block */}
-        <Link href='/'>
-          <div className='flex justify-between gap-4'>
+        <Link
+          href='/'
+          className={`mr-10 ${width < 848 ? `w-[100vw] mb-4` : ''}`}
+        >
+          <div className='flex justify-start gap-4'>
             <picture>
               <Image
                 src='/images/шаурма.webp'
@@ -69,10 +74,18 @@ export const Header: React.FC<Props> = ({
         </Link>
 
         {/* search block */}
-        {hasSearch && <SearchInput className='mx-10' />}
+        {hasSearch && (
+          <SearchInput
+            className={`mr-10 min-w-[250px] flex-grow
+              ${width < 521 ? ' mr-0' : ''}
+              `}
+          />
+        )}
 
         {/* header button block */}
-        <div className='flex justify-between gap-2'>
+        <div
+          className={`flex justify-between gap-2  ${width < 551 ? 'flex-grow mt-4' : ''}`}
+        >
           <AuthModal
             open={openAuthModal}
             onClose={() => setOpenAuthModal(false)}
