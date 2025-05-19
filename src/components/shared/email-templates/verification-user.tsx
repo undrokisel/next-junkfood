@@ -1,3 +1,4 @@
+import { getDomain } from '@/shared/lib/utils';
 import React from 'react';
 
 interface Props {
@@ -11,7 +12,7 @@ export const VerificationUserTemplate: React.FC<Props> = ({ code }) => (
     </p>
 
     <p>
-      <a href={`${process.env.NEXT_PUBLIC_API_URL}/auth/verify?code=${code}`}>
+      <a href={`${getDomain()}/auth/verify?code=${code}`}>
         Подтвердить регистрацию
       </a>
     </p>
