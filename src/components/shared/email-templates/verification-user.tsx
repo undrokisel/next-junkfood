@@ -12,7 +12,7 @@ export const VerificationUserTemplate: React.FC<Props> = ({ code }) => (
     </p>
 
     <p>
-      <a href={`${getDomain()}/auth/verify?code=${code}`}>
+      <a href={`${getDomain()}/api/auth/verify?code=${code}`}>
         Подтвердить регистрацию
       </a>
     </p>
