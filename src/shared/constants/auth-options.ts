@@ -2,6 +2,8 @@ import { AuthOptions } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
+import AppleProvider from 'next-auth/providers/apple';
+import VkProvider from 'next-auth/providers/vk';
 
 import { UserRole } from '@prisma/client';
 import { prisma } from '../../../prisma/prisma-client';
@@ -25,6 +27,14 @@ export const authOptions: AuthOptions = {
           role: 'USER' as UserRole,
         };
       },
+    }),
+    AppleProvider({
+      clientId: process.env.APPLE_ID || '',
+      clientSecret: process.env.APPLE_SECRET || '',
+    }),
+    VkProvider({
+      clientId: process.env.VK_CLIENT_ID || '',
+      clientSecret: process.env.VK_CLIENT_SECRET || '',
     }),
     CredentialsProvider({
       name: 'Credentials',

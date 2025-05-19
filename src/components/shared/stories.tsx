@@ -7,6 +7,8 @@ import { IStory } from '@/services/stories';
 import { cn } from '@/shared/lib/utils';
 import ReactStories from 'react-insta-stories';
 import { X } from 'lucide-react';
+import { useWindowSize } from 'react-use';
+import { arrangeImgUrl } from '@/shared/lib/arrangeImgUrl';
 import { Container } from './container';
 
 interface Props {
@@ -17,6 +19,8 @@ export const Stories: React.FC<Props> = ({ className }) => {
   const [stories, setStories] = React.useState<IStory[]>([]);
   const [open, setOpen] = React.useState(false);
   const [selectedStory, setSelectedStory] = React.useState<IStory>();
+
+  const { width, height } = useWindowSize();
 
   React.useEffect(() => {
     async function fetchStories() {
@@ -35,7 +39,7 @@ export const Stories: React.FC<Props> = ({ className }) => {
   return (
     <Container
       className={cn(
-        'flex items-center justify-between gap-2 my-10 overflow-x-auto',
+        'flex items-center justify-between gap-2 my-10 overflow-x-auto scrollbar',
         className
       )}
     >
@@ -43,29 +47,67 @@ export const Stories: React.FC<Props> = ({ className }) => {
         [...Array(9)].map((_, index) => (
           <div
             key={index}
-            className='w-[120px] h-[120px] bg-gray-200 rounded-full animate-pulse'
+            className={`
+              _min-w-[120px] _h-[120px] _rounded-full 
+              min-w-[150px] h-[220px] rounded-3xl 
+              animate-pulse
+              bg-gray-200 
+              `}
           />
         ))}
 
       {stories.map((story) => (
-        <Image
+        <div
           key={story.id}
-          // eslint-disable-next-line
-          onClick={() => onClickStory(story)}
-          height={120}
-          width={120}
-          alt='сторис'
-          className='rounded-full cursor-pointer border-2 border-primary min-h-[120px] object-scale-down object-center bg-primary/20'
-          src={`/${story.previewImageUrl}`}
-        />
+          className={`
+          relative  min-h-[220px] min-w-[150px] overflow-hidden
+          rounded-3xl
+        `}
+        >
+          <Image
+            // eslint-disable-next-line
+            onClick={() => onClickStory(story)}
+            height={220}
+            width={150}
+            alt='сторис'
+            className={`
+            _rounded-full 
+            rounded-3xl
+            cursor-pointer 
+            min-h-[220px] min-w-[150px] 
+            max-h-[220px] max-w-[150px] 
+            h-full
+            bg-primary/20
+            `}
+            style={{
+              objectPosition: story.imgPosition,
+              objectFit: story.objectFit || undefined,
+            }}
+            src={arrangeImgUrl(story.previewImageUrl)}
+          />
+          <div
+            className={`absolute left-5 text-2xl 
+              ${story?.text_color ? `text-[${story.text_color}]` : 'text-black'}
+              `}
+            style={{
+              color: story?.text_color ?? 'inherit',
+              [story.textPosition]: '0.75rem',
+              fontSize: story.textSize ?? '1.5rem',
+            }}
+          >
+            {story?.text ?? ''}
+          </div>
+        </div>
       ))}
 
       {open && (
-        <div className=' fixed left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-30'>
-          <div
-            className='relative flex justify-center items-center'
-            style={{ width: 420 }}
-          >
+        <div
+          className={`
+          fixed left-0 top-0 w-full h-full 
+          bg-black/80 flex items-center justify-center z-30
+        `}
+        >
+          <div className='relative flex justify-center items-center'>
             <button
               className='absolute -right-10 -top-5 z-30'
               onClick={() => setOpen(false)}
@@ -75,10 +117,28 @@ export const Stories: React.FC<Props> = ({ className }) => {
 
             <ReactStories
               storyContainerStyles={{
-                background: 'hsl(142.1 76.2% 36.3%)',
+                // background: 'hsl(142.1 76.2% 36.3%)',
+                // background: '#dcfce7',
                 borderRadius: '30px',
-                padding: '0 60px 0 ',
-                margin: '0 auto',
+                // padding: '0 60px 0 ',
+                // margin: '0 auto',
+                overflow: 'hidden',
+                // objectFit: 'cover',
+                // objectPosition: 'right',
+                // minWidth: '100%',
+                display: 'flex',
+                justifyContent: 'top',
+                alignItems: 'center',
+                position: 'relative',
+              }}
+              storyInnerContainerStyles={{
+                background: 'gray-400',
+                overflow: 'hidden',
+                position: 'absolute',
+                top: '0px',
+                left: '0px',
+                right: '0px',
+                bottom: '0px',
               }}
               storyStyles={{
                 display: 'flex',
@@ -88,18 +148,25 @@ export const Stories: React.FC<Props> = ({ className }) => {
               onAllStoriesEnd={() => setOpen(false)}
               stories={
                 selectedStory?.items.map((item) => ({
-                  url: `/${item.sourceUrl}`,
+                  url: arrangeImgUrl(item.sourceUrl),
                   header: {
-                    heading: 'Это твоя шаурма',
-                    subheading: 'ммм-м-м- как вкусно',
+                    heading: item?.heading || '',
+                    subheading: item?.subheading || '',
                     profileImage: ``,
                   },
                 })) || []
               }
-              defaultInterval={3000}
+              defaultInterval={1000000}
               keyboardNavigation
-              width={420}
-              height={400}
+              width={width > 700 ? '610px' : '90vw'}
+              height={
+                // eslint-disable-next-line
+                height > 700 && width > 700
+                  ? '610px'
+                  : height > 700 && width < 700
+                    ? '550px'
+                    : '90vh'
+              }
             />
           </div>
         </div>

@@ -49,26 +49,26 @@ export const Header: React.FC<Props> = ({
   }, []);
 
   return (
-    <header className={cn('border border-b-2 ', className)}>
+    <header className={cn('border ', className)}>
       <Container className='flex justify-between items-center py-7 px-2 flex-wrap'>
         {/* logo block */}
         <Link
           href='/'
           className={`mr-10 ${width < 848 ? `w-[100vw] mb-4` : ''}`}
         >
-          <div className='flex justify-start gap-4'>
+          <div className='flex justify-start items-center gap-4'>
             <picture>
               <Image
                 src='/images/шаурма.webp'
                 width='50'
                 height='50'
                 alt='Логотип'
-                className='rounded-full'
+                className='rounded-full min-w-[50px]'
               />
             </picture>
             <div className='flex flex-col'>
               <h1 className='uppercase text-2xl font-black'>Твоя шаурма</h1>
-              <p className='text-gray-400 leading-3 text-sm'>И только Твоя</p>
+              <p className='text-black-400 leading-3 text-sm'>И только Твоя</p>
             </div>
           </div>
         </Link>
@@ -76,15 +76,17 @@ export const Header: React.FC<Props> = ({
         {/* search block */}
         {hasSearch && (
           <SearchInput
-            className={`mr-10 min-w-[250px] flex-grow
-              ${width < 521 ? ' mr-0' : ''}
+            className={`
+              mr-4 lg:mr-10 
+              min-w-[250px] flex-grow
+              ${width < 535 ? ' mr-0 flex-[100%]' : ''}
               `}
           />
         )}
 
         {/* header button block */}
         <div
-          className={`flex justify-between gap-2  ${width < 551 ? 'flex-grow mt-4' : ''}`}
+          className={`flex justify-between gap-2  ${width < 535 ? 'flex-grow mt-4' : ''}`}
         >
           <AuthModal
             open={openAuthModal}

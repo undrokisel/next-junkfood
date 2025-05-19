@@ -9,6 +9,7 @@ export async function GET(req: NextRequest) {
         contains: query,
         mode: 'insensitive',
       },
+      deletedAt: null,
     },
     take: 5,
   });

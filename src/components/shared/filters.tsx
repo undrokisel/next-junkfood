@@ -18,7 +18,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
   const filters = useFilters();
   useQueryFilters(filters);
 
-  if (width < 600) return null;
+  if (width < 800) return null;
 
   const updatePriceRange = (prices: number[]) => {
     filters.setPriceRange('priceFrom', prices[0]);
@@ -52,7 +52,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
       />
 
       {/* dought checkboxes */}
-      <CheckboxFilterGroup
+      {/* <CheckboxFilterGroup
         title='Варианты теста'
         className='mt-5'
         items={[
@@ -63,12 +63,11 @@ export const Filters: React.FC<Props> = ({ className }) => {
         onCheckboxClick={filters.toggleDought}
         selectedIds={filters.selectedDought}
         name='dought'
-      />
+      /> */}
 
       {/* price range filter */}
-      <div className='flex flex-col gap-4 mt-10'>
-        <Title text='Цена: от и до' size='xs' />
-        <div className='flex'>
+      <div className='flex flex-col gap-4 mt-5'>
+        <div className='flex gap-1'>
           <Input
             type='number'
             placeholder='0'
@@ -78,6 +77,11 @@ export const Filters: React.FC<Props> = ({ className }) => {
             onChange={(e) =>
               filters.setPriceRange('priceFrom', Number(e.target.value))
             }
+            className={`
+              bg-green-100 transition-all duration-300 
+              focus:bg-amber-100
+              hover:bg-amber-100
+              `}
           />
           <Input
             type='number'
@@ -88,6 +92,11 @@ export const Filters: React.FC<Props> = ({ className }) => {
             onChange={(e) =>
               filters.setPriceRange('priceTo', Number(e.target.value))
             }
+            className={`
+              bg-green-100 transition-all duration-300 
+              focus:bg-amber-100
+              hover:bg-amber-100
+              `}
           />
         </div>
         <Slider

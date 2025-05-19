@@ -72,10 +72,10 @@ const Slider = React.forwardRef(
               </span>
             </div>
             <SliderPrimitive.Thumb
-              className={`block h-4 w-4 rounded-full border-2 border-primary/50 bg-white shadow 
+              className={`block h-4 w-4 rounded-full border-2 border-primary/50  shadow 
               ring-offset-background transition-colors
               focus-visible:outline-none focus-visible:ring-1
-            focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50`}
+            focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-green-100 focus:bg-amber-200`}
             />
           </React.Fragment>
         ))}

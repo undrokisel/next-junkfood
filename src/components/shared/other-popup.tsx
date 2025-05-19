@@ -1,6 +1,7 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { useCategoryStore } from '@/store/category';
+import Link from 'next/link';
 
 interface Props {
   className?: string;
@@ -32,11 +33,23 @@ export const OtherPopup: React.FC<Props> = ({
                 `,
         categoryActiveId === categoryId &&
           `shadow-md shadow-gray-400
-      text-primary bg-white`,
+      text-primary bg-white
+      
+      `,
         className
       )}
     >
-      <a href={href}>{text}</a>
+      <Link
+        href={href}
+        className={`
+          hover:border-none
+          focus:border-none
+          hover:outline-none
+          focus:outline-none
+      `}
+      >
+        {text}
+      </Link>
     </div>
   );
 };

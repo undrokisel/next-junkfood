@@ -40,7 +40,15 @@ export const FormTextarea: React.FC<Props> = ({
       </p>
 
       <div className='relative'>
-        <Textarea className='h-12 text-md' {...register(name)} {...props} />
+        <Textarea
+          className={`h-12 text-md bg-green-50
+          transition-all duration-300
+          hover:bg-amber-100
+          focus:bg-amber-100
+          `}
+          {...register(name)}
+          {...props}
+        />
 
         {value && <ClearButton onClick={onClickClear} />}
       </div>

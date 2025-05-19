@@ -9,3 +9,4 @@ export { Skeleton } from './skeleton';
 export { Slider } from './slider';
 export { Textarea } from './textarea';
 export { Sheet } from './sheet';
+export { Command } from './command';

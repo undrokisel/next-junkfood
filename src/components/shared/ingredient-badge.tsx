@@ -28,9 +28,11 @@ export const IngredientBadge: React.FC<Props> = ({
       onClick={onClick}
       onKeyDown={onClick}
       className={cn(
-        'w-32 flex flex-col justify-center items-center p-1 bg-white rounded-md text-center relative cursor-pointer shadow-md',
+        `w-24 sm:w-28 flex-grow
+        flex flex-col justify-center items-center 
+        p-1 bg-white rounded-md text-center relative cursor-pointer shadow-md`,
         {
-          'border border-primary': active,
+          'border border-primary bg-amber-50': active,
         },
         className
       )}
@@ -43,7 +45,7 @@ export const IngredientBadge: React.FC<Props> = ({
         />
       )}
       <span className='text-xs text-center'>{name}</span>
-      <span className='font-bold  text-center'>{price}</span>
+      <span className='font-bold  text-center'>{price} ₽</span>
     </div>
   );
 };

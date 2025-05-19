@@ -4,6 +4,13 @@
 
 html {
   scroll-behavior: smooth;
+
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.239), rgba(0, 0, 0, 0.27)), url("/images/bg1.png"); */
+  background-image: linear-gradient(
+    rgba(0, 200, 0, 0.239),
+    rgba(0, 80, 0, 0.27)
+  );
+  background-attachment: fixed;
 }
 
 /* prefers-reduced-motion: reduce */
@@ -56,23 +63,23 @@ html {
 
   /* стилизация полосы прокрутки */
   .scrollbar::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
 
   /* дорожка полосы прокрутки */
   .scrollbar::-webkit-scrollbar-track {
-    border-radius: 6px;
-    background-color: #fff;
+    border-radius: 16px;
+    background-color: var(--primary);
   }
 
   /* ползунок полосы прокрутки */
   .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: #dbdadd;
+    background-color: var(--primary);
   }
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #dbdadd;
+    background: var(--primary);
   }
 
   @layer utilities {
@@ -112,4 +119,13 @@ html {
     --input: 240 3.7% 15.9%;
     --ring: 142.4 71.8% 29.2%;
   } */
+}
+
+input.react-dadata__input {
+  background-color: #f0fdf4;
+}
+input.react-dadata__input:hover,
+input.react-dadata__input:focus {
+  background-color: rgb(254, 243, 199);
+  outline: none !important;
 }

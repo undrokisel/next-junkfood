@@ -7,6 +7,7 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   // SheetDescription,
   SheetFooter,
   SheetHeader,
@@ -40,7 +41,8 @@ export const CartDrawer: React.FC<PropsWithChildren> = ({ children }) => {
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
 
-      <SheetContent className='flex flex-col justify-between pb-0 bg-[#F4F1EE]'>
+      <SheetContent className='flex flex-col justify-between pb-0 bg-green-100'>
+        <SheetDescription className='sr-only' />
         <div
           className={cn(
             'flex flex-col h-full',
@@ -49,7 +51,7 @@ export const CartDrawer: React.FC<PropsWithChildren> = ({ children }) => {
         >
           {totalAmount > 0 && (
             <SheetHeader>
-              <SheetTitle>
+              <SheetTitle className='text-md sm:text-lg leading-none'>
                 В корзине{' '}
                 <span className='font-bold'>{items.length} товара</span>
               </SheetTitle>
@@ -84,9 +86,9 @@ export const CartDrawer: React.FC<PropsWithChildren> = ({ children }) => {
 
           {totalAmount > 0 && (
             <>
-              <div className='-mx-6 mt-5 overflow-auto flex-1 '>
+              <div className='-mx-6 mt-4 sm:mt-5 overflow-auto flex-1 '>
                 {items.map((item) => (
-                  <div key={item.id} className='mb-2'>
+                  <div key={item.id} className='mb-1 sm:mb-2'>
                     <CartDrawerItem
                       id={item.id}
                       imageUrl={item.imageUrl}
@@ -103,17 +105,18 @@ export const CartDrawer: React.FC<PropsWithChildren> = ({ children }) => {
                         onClickCountButton(item.id, item.quantity, type)
                       }
                       onClickRemove={() => removeCartItem(item.id)}
+                      className='bg-green-50'
                     />
                   </div>
                 ))}
               </div>
 
-              <SheetFooter className='-mx-6 bg-white p-8'>
+              <SheetFooter className='-mx-6 bg-white p-2 sm:p-8 border-t-2 bg-green-100'>
                 <div className='w-full'>
-                  <div className='flex mb-4'>
+                  <div className='flex mb-2 sm:mb-4'>
                     <span className='flex flex-1 text-lg text-neutral-500'>
                       Итого
-                      <div className='flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2' />
+                      <div className='flex-1 border-b border-dashed border-b-neutral-400 relative -top-1 mx-2' />
                     </span>
                     <span className='font-bold text-lg'>{totalAmount}</span>
                   </div>

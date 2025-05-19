@@ -253,29 +253,174 @@ async function up() {
   // сиды для сторис
   await prisma.story.createMany({
     data: [
-      { previewImageUrl: 'images/products/combo/boxf_fly.avif' },
-      { previewImageUrl: 'images/products/combo/box_pieces.avif' },
-      { previewImageUrl: 'images/products/rolls/roll1.png' },
-      { previewImageUrl: 'images/products/rolls/roll2.png' },
-      { previewImageUrl: 'images/products/burgers/cheeseburger.webp' },
-      { previewImageUrl: 'images/products/burgers/gumburger.webp' },
-      { previewImageUrl: 'images/products/chicken/fly.webp' },
-      { previewImageUrl: 'images/products/chicken/strips.webp' },
-      { previewImageUrl: 'images/products/chicken/nuggets.webp' },
+      {
+        previewImageUrl: 'images/stories/gift.jpg',
+        text: 'Розыгрыш 3000 руб.',
+        objectFit: 'cover',
+        textPosition: 'bottom',
+        text_color: 'white',
+        imgPosition: 'center',
+      },
+      // 2
+      {
+        previewImageUrl: 'images/stories/ice.png',
+        text: '',
+      },
+      // 3
+      {
+        previewImageUrl: 'images/stories/big2.png',
+        text: '',
+        objectFit: 'cover',
+      },
+      // 4
+      {
+        previewImageUrl: 'images/stories/вакансия1.png',
+        text: 'Ищем повара',
+        objectFit: 'cover',
+        textPosition: 'top',
+        imgPosition: 'right',
+        text_color: 'white',
+        textSize: '1rem',
+      },
+      // 5
+      {
+        previewImageUrl: 'images/stories/cocktails1.png',
+        objectFit: 'cover',
+        textPosition: 'top',
+      },
+      // 6
+      {
+        previewImageUrl: 'images/stories/конкурс1.png',
+        // text: 'Текст сторис',
+        // text_color: 'amber-900',
+        objectFit: 'cover',
+        textPosition: 'top',
+      },
+      // 7
+      {
+        previewImageUrl: 'images/stories/разгон.png',
+        text: '',
+        text_color: 'amber-900',
+        objectFit: 'cover',
+        textPosition: 'top',
+      },
+      // 8
+      {
+        previewImageUrl: 'images/stories/скидки.png',
+        objectFit: 'cover',
+        textPosition: 'top',
+        text: '',
+        text_color: 'amber-900',
+      },
+      // 9
+      {
+        previewImageUrl: 'images/stories/супермен1.png',
+        text: 'доставка - 40 мин',
+        text_color: 'white',
+        objectFit: 'cover',
+        textPosition: 'bottom',
+      },
     ],
   });
 
   await prisma.storyItem.createMany({
     data: [
-      { storyId: 1, sourceUrl: 'images/products/combo/boxf_fly.avif' },
-      { storyId: 1, sourceUrl: 'images/products/combo/box_pieces.avif' },
-      { storyId: 1, sourceUrl: 'images/products/rolls/roll1.png' },
-      { storyId: 1, sourceUrl: 'images/products/rolls/roll2.png' },
-      { storyId: 1, sourceUrl: 'images/products/burgers/cheeseburger.webp' },
-      { storyId: 1, sourceUrl: 'images/products/burgers/gumburger.webp' },
-      { storyId: 1, sourceUrl: 'images/products/chicken/fly.webp' },
-      { storyId: 1, sourceUrl: 'images/products/chicken/strips.webp' },
-      { storyId: 1, sourceUrl: 'images/products/chicken/nuggets.webp' },
+      {
+        storyId: 1,
+        sourceUrl: 'images/stories/розыгрыш.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 2,
+        sourceUrl: 'images/stories/ice1.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 3,
+        sourceUrl: 'images/stories/big2.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 4,
+        sourceUrl: 'images/stories/вакансия2.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 5,
+        sourceUrl: 'images/stories/cocktails2.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 5,
+        sourceUrl: 'images/stories/лето3.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 5,
+        sourceUrl: 'images/stories/лето4.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 5,
+        sourceUrl: 'images/stories/лето5.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 6,
+        sourceUrl: 'images/stories/конкурс1.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 6,
+        sourceUrl: 'images/stories/конкурс2.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 6,
+        sourceUrl: 'images/stories/конкурс3.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 6,
+        sourceUrl: 'images/stories/конкурс4.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 6,
+        sourceUrl: 'images/stories/конкурс5.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 7,
+        sourceUrl: 'images/stories/разгон.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 8,
+        sourceUrl: 'images/stories/скидки.png',
+        heading: '',
+        subheading: '',
+      },
+      {
+        storyId: 9,
+        sourceUrl: 'images/stories/супермен1.png',
+        heading: '',
+        subheading: '',
+      },
     ],
   });
 }

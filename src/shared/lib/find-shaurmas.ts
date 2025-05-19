@@ -28,6 +28,7 @@ export const findShaurma = async (params: GetSearchParams) => {
           id: 'desc',
         },
         where: {
+          deletedAt: null,
           ingredients: ingredientsIdArr
             ? {
                 some: {

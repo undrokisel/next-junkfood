@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 
 interface Props {
@@ -12,9 +11,9 @@ export const VerificationUserTemplate: React.FC<Props> = ({ code }) => (
     </p>
 
     <p>
-      <Link href={`http://localhost:3000/api/auth/verify?code=${code}`}>
+      <a href={`http://localhost:3000/api/auth/verify?code=${code}`}>
         Подтвердить регистрацию
-      </Link>
+      </a>
     </p>
   </div>
 );

@@ -12,6 +12,7 @@ export const AdressInput: React.FC<Props> = ({ onChange }) => {
   const id = useId();
   return (
     <AddressSuggestions
+      hintText='Выберите адрес из списка ниже'
       token={`${process.env.NEXT_PUBLIC_DADATA_API_KEY}`}
       onChange={(data) => onChange?.(data?.value)}
       uid={id}

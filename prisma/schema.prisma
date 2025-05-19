@@ -46,9 +46,10 @@ model User {
 }
 
 model Product {
-    id       Int    @id @default(autoincrement())
-    name     String
-    imageUrl String
+    id          Int     @id @default(autoincrement())
+    name        String
+    imageUrl    String
+    description String?
 
     // у одного продукта может быть только одна категория
     category   Category @relation(fields: [categoryId], references: [id])
@@ -60,6 +61,7 @@ model Product {
     // у одного продукта может быть
     // связь со многими вариантами продукта
     variants    ProductVariant[]
+    deletedAt   DateTime?
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -87,9 +89,9 @@ model ProductVariant {
     // и заказов
     // временное решение: OrderItem не создавать, хранить товары заказа в Json
     // orderItems OrderItem[]
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    deletedAt   DateTime?
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
 }
 
 model Category {
@@ -199,8 +201,11 @@ model Order {
 
     totalAmount Int @default(0)
 
-    // статус
+    // статус оплаты
     status OrderStatus @default(PENDING)
+
+    // статус оплаты
+    delivery_status DeliveryStatus @default(PENDING)
 
     // способ оплаты - картой - кэш
     // paymentType PaymentType
@@ -226,6 +231,12 @@ model Order {
 enum OrderStatus {
     PENDING //только создан, не оплачен
     PAYD
+    CANCELLED
+}
+
+enum DeliveryStatus {
+    PENDING //только создан, не оплачен
+    FULLFILED
     CANCELLED
 }
 
@@ -278,16 +289,42 @@ model VerificationCode {
 //     ingredients Ingredient[]
 // }
 model Story {
-    id Int @id @default(autoincrement())
+    id              Int          @id @default(autoincrement())
     previewImageUrl String
-    items StoryItem[]
-    createdAt DateTime @default(now())
+    items           StoryItem[]
+    text            String?
+    text_color      String?
+    createdAt       DateTime     @default(now())
+    objectFit       ObjectFit    @default(contain)
+    imgPosition     ImgPosition  @default(top)
+    textPosition    TextPosition @default(bottom)
+    textSize        String?
+}
+
+enum ObjectFit {
+    cover
+    contain
+}
+
+enum TextPosition {
+    top
+    bottom
+}
+
+enum ImgPosition {
+    top
+    left
+    right
+    bottom
+    center
 }
 
 model StoryItem {
-    id Int @id @default(autoincrement())
-    storyId Int
-    story Story @relation(fields: [storyId], references: [id])
-    sourceUrl String
-    createdAt DateTime @default(now())
+    id         Int      @id @default(autoincrement())
+    storyId    Int
+    story      Story    @relation(fields: [storyId], references: [id])
+    sourceUrl  String
+    createdAt  DateTime @default(now())
+    heading    String?
+    subheading String?
 }

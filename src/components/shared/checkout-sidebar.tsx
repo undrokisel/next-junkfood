@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
+import { ArrowRight, Package, Truck } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
 import { WhiteBlock } from './white-block';
 import { CheckoutItemDetails } from './checkout-item-details';
@@ -23,7 +23,9 @@ export const CheckoutSidebar: React.FC<Props> = ({
   const totalPrice = totalAmount + DELIVERY_PRICE + vatPrice;
 
   return (
-    <WhiteBlock className={cn('p-6 sticky top-4', className)}>
+    <WhiteBlock
+      className={cn('p-2 lg:p-6 sticky top-4 bg-green-50', className)}
+    >
       <div className='flex flex-col gap-1'>
         <span className='text-xl'>Итого:</span>
         {loading ? (
@@ -37,8 +39,8 @@ export const CheckoutSidebar: React.FC<Props> = ({
 
       <CheckoutItemDetails
         title={
-          <div className='flex items-center'>
-            <Package size={18} className='mr-2 text-gray-400' />
+          <div className='flex items-center leading-none'>
+            <Package size={18} className='mr-1 lg:mr-2 text-gray-400' />
             Стоимость корзины:
           </div>
         }
@@ -47,21 +49,6 @@ export const CheckoutSidebar: React.FC<Props> = ({
             <Skeleton className='h-6 w-16 rounded-[6px]' />
           ) : (
             `${totalAmount} ₽`
-          )
-        }
-      />
-      <CheckoutItemDetails
-        title={
-          <div className='flex items-center'>
-            <Percent size={18} className='mr-2 text-gray-400' />
-            налоги:
-          </div>
-        }
-        value={
-          loading ? (
-            <Skeleton className='h-6 w-16 rounded-[6px]' />
-          ) : (
-            `${vatPrice} ₽`
           )
         }
       />

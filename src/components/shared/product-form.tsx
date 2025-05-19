@@ -60,17 +60,18 @@ export const ProductForm: React.FC<Props> = ({
         variants={product.variants}
         onSubmit={onSubmit}
         loading={loading}
+        description={product.description || ''}
       />
     );
 
   return (
     <ChooseProductForm
-      productId={product.id}
       imageUrl={product.imageUrl}
       name={product.name}
       onSubmit={onSubmit}
       price={firstItem.price}
       loading={loading}
+      description={product.description || ''}
     />
   );
 };

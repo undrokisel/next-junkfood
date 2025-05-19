@@ -11,6 +11,7 @@ import {
 } from '@/shared/constants/checkout-form-schema';
 import {
   CheckoutSidebar,
+  CheckoutTotalSmBar,
   Container,
   Title,
   CheckoutAddressForm,
@@ -20,8 +21,10 @@ import {
 import { useCart } from '@/hooks';
 import { createOrder } from '@/app/actions';
 import { Api } from '@/services/api-client';
+import { useWindowSize } from 'react-use';
 
 export default function CheckoutPage() {
+  const { width } = useWindowSize();
   const [submitting, setSubmitting] = React.useState(false);
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
     useCart();
@@ -87,9 +90,16 @@ export default function CheckoutPage() {
       />
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className='flex gap-10'>
-            {/* Левая часть */}
-            <div className='flex flex-col gap-10 flex-1 mb-20'>
+          <div className='flex gap-2 lg:gap-10'>
+            <div className='flex flex-col gap-2 lg:gap-10 flex-1 mb-20'>
+              {width <= 600 && (
+                <div className='relative'>
+                  <CheckoutTotalSmBar
+                    totalAmount={totalAmount}
+                    loading={loading || submitting}
+                  />
+                </div>
+              )}
               <CheckoutCart
                 items={items}
                 onClickCountButton={onClickCountButton}
@@ -106,12 +116,15 @@ export default function CheckoutPage() {
             </div>
 
             {/* Правая часть */}
-            <div className='w-[450px]'>
-              <CheckoutSidebar
-                totalAmount={totalAmount}
-                loading={loading || submitting}
-              />
-            </div>
+            {width > 600 && (
+              <div className='w-[250px] sm:w-[300px] md:w-[350px] lg:w-[450px] '>
+                <CheckoutSidebar
+                  totalAmount={totalAmount}
+                  loading={loading || submitting}
+                  className='bg-green-100'
+                />
+              </div>
+            )}
           </div>
         </form>
       </FormProvider>

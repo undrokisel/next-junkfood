@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { ArrowUpDown } from 'lucide-react';
 import { useWindowSize } from 'react-use';
+import { motion } from 'motion/react';
 import { useCategoryStore } from '../../store/category';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { OtherPopup } from './other-popup';
@@ -50,24 +51,47 @@ export const Categories: React.FC<Props> = ({ categories, className }) => {
 
   return (
     <ul
-      className={cn(`inline-flex gap-1 bg-gray-50 p-1 rounded-md`, className)}
+      className={cn(
+        `inline-flex gap-1 bg-gray-50 p-1 rounded-md bg-transparent`,
+        className
+      )}
     >
       {barSlice &&
         barSlice.map((category, index) => (
           <li key={index}>
-            <a
-              href={`/#${category.name}`}
-              className={cn(
-                'flex items-center font-bold h-11 rounded-md px-5',
-                categoryActiveId === category.id &&
-                  `shadow-md shadow-gray-400 
-              text-primary bg-white`
-              )}
+            <motion.div
+              initial={{ y: -20 }}
+              // animate={{ opacity: 1 }}
+              whileInView={{ y: 0 }}
+              transition={{ duration: 0.4 + index / 100 }}
+              exit={{ opacity: 0 }}
+              whileHover={{ y: 2 }}
+              whileTap={{ y: 2 }}
             >
-              <button>
-                {category.name[0].toUpperCase() + category.name.slice(1)}
-              </button>
-            </a>
+              <a
+                href={`/#${category.name}`}
+                className={cn(
+                  `flex items-center font-bold h-11 rounded-md px-5 
+              transition-colors duration-300
+              hover:text-amber-200 
+              focus:text-amber-200 
+              focus:border-none
+              focus:outline-none
+              `,
+                  categoryActiveId === category.id &&
+                    `shadow-md shadow-gray-400 
+              text-primary bg-white bg-green-50 
+              hover:text-primary bg-amber-200
+              focus:text-primary
+              
+              `
+                )}
+              >
+                <div tabIndex={-1}>
+                  {category.name[0].toUpperCase() + category.name.slice(1)}
+                </div>
+              </a>
+            </motion.div>
           </li>
         ))}
 
@@ -75,20 +99,31 @@ export const Categories: React.FC<Props> = ({ categories, className }) => {
         <Popover>
           <PopoverTrigger
             className={cn(
-              'flex items-center font-bold h-11 rounded-md px-5 gap-2 '
+              `flex items-center font-bold h-11 rounded-md px-5 gap-2 
+              transition-all duration-300 
+              hover:text-amber-200
+              focus:text-amber-200
+              focus:border-none
+              hover:border-none
+              focus:outline-none
+              hover:outline-none
+              `
             )}
           >
             <span>Ещё</span>
             <ArrowUpDown size='16' />
           </PopoverTrigger>
-          <PopoverContent className='w-full'>
+          <PopoverContent className='w-full bg-green-100'>
             {dropdownSlice.map((category, index) => (
               <OtherPopup
                 key={index}
                 text={`${category.name[0].toUpperCase()}${category.name.slice(1)}`}
                 categoryId={category.id}
                 href={`/#${category.name}`}
-                className='my-1 '
+                className='my-1 bg-green-50 
+                  hover:bg-amber-200
+                  focus:bg-amber-200
+                '
               />
             ))}
           </PopoverContent>

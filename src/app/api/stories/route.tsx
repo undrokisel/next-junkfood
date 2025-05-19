@@ -6,6 +6,9 @@ export async function GET() {
     include: {
       items: true,
     },
+    orderBy: {
+      createdAt: 'desc',
+    },
   });
 
   return NextResponse.json(stories);

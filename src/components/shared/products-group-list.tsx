@@ -15,6 +15,7 @@ interface ProductsGroupListProps {
   categoryId: number;
   className?: string;
   listClassName?: string;
+  nextSection?: string;
 }
 
 export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
@@ -22,6 +23,7 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
   products,
   listClassName,
   categoryId,
+  nextSection,
   className,
 }) => {
   const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
@@ -36,7 +38,7 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
   }, [categoryId, intersection?.isIntersecting, title]);
 
   return (
-    <section className={cn(className)} ref={intersectionRef} id={title}>
+    <section ref={intersectionRef} className={cn(className)}>
       <Title text={title} size='lg' className='font-extrabold mb-5' />
       <div
         className={cn(
@@ -56,11 +58,12 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({
               imageUrl={product.imageUrl}
               price={product.variants[0].price}
               ingredients={product.ingredients}
-              // description={product.description}
+              description={product.description || ''}
             />
           );
         })}
       </div>
+      {nextSection && <div className='mb-5' id={nextSection} />}
     </section>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { DoughType, ShaurmaSize } from '@/shared/constants/shaurma';
 import { getCartItemDetails } from '@/shared/lib';
 import { CartStateItem } from '@/shared/lib/get-cart-details';
+import { cn } from '@/shared/lib/utils';
 import { WhiteBlock } from '../white-block';
 import { CheckoutItem } from '../checkout-item';
 import { CheckoutItemSkeleton } from '../checkout-item-skeleton';
@@ -26,8 +27,8 @@ export const CheckoutCart: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <WhiteBlock title='1. Корзина' className={className}>
-      <div className='flex flex-col gap-5'>
+    <WhiteBlock title='1. Корзина' className={cn('bg-green-100', className)}>
+      <div className='flex flex-col gap-2 lg:gap-5'>
         {loading
           ? [...Array(items.length)].map((_, index) => (
               <CheckoutItemSkeleton key={index} />

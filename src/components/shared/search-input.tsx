@@ -7,6 +7,8 @@ import { useClickAway, useDebounce } from 'react-use';
 import Link from 'next/link';
 import { Api } from '@/services/api-client';
 import { Product } from '@prisma/client';
+import Image from 'next/image';
+import { arrangeImgUrl } from '@/shared/lib/arrangeImgUrl';
 
 interface Props {
   className?: string;
@@ -64,7 +66,7 @@ export const SearchInput: React.FC<Props> = (props: Props) => {
         <input
           type='text'
           placeholder='Поиск по ассортименту ...'
-          className='rounded-2xl outline-none bg-slate-100 pr-4 pl-10 w-full'
+          className='rounded-2xl outline-none bg-green-50 pr-4 pl-10 w-full'
           onFocus={() => setFocused(true)}
           onChange={(e) => setQuery(e.target.value)}
           value={query}
@@ -85,10 +87,12 @@ export const SearchInput: React.FC<Props> = (props: Props) => {
                   className='flex items-center gap-3 w-full hover:bg-primary/10 rounded-2xl px-3 py-2'
                   href={`/product/${product.id}`}
                 >
-                  <img
-                    src={`/${product.imageUrl}`}
+                  <Image
+                    width='32'
+                    height='32'
+                    src={arrangeImgUrl(product.imageUrl)}
                     alt={product.name}
-                    className='rounded-sm h-8 w-8'
+                    className='rounded-sm h-8 w-8 object-contain'
                   />
                   <span>{product.name}</span>
                 </Link>

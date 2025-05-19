@@ -4,7 +4,12 @@ import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { useRouter } from 'next/navigation';
 import { Product } from '@prisma/client';
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { ChooseProductForm } from '../choose-product-form';
 
 interface Props {
@@ -23,13 +28,15 @@ export const ChooseShaurmaModal: React.FC<Props> = ({ product, className }) => {
           className
         )}
       >
-        <DialogTitle />
+        <DialogTitle className='sr-only' />
+        <DialogDescription className='sr-only' />
 
         <ChooseProductForm
           imageUrl={product.imageUrl}
           name={product.name}
           price={100}
-          productId={product.id}
+          description={product.description || ''}
+          // productId={product.id}
           // ingredients={[]}
         />
       </DialogContent>

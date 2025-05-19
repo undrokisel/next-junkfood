@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
+import { cn } from '@/shared/lib/utils';
 import { WhiteBlock } from '../white-block';
 import { AdressInput } from '../address-input';
 import { ErrorText } from '../error-text';
@@ -15,8 +16,11 @@ export const CheckoutAddressForm: React.FC<Props> = ({ className }) => {
   const { control } = useFormContext();
 
   return (
-    <WhiteBlock title='3. Адрес доставки' className={className}>
-      <div className='flex flex-col gap-5'>
+    <WhiteBlock
+      title='3. Адрес доставки'
+      className={cn('bg-green-100', className)}
+    >
+      <div className='flex flex-col gap-2 sm:gap-5'>
         <Controller
           control={control}
           name='address'

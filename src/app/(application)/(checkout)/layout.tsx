@@ -15,13 +15,13 @@ export default function CheckoutLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className='min-h-screen bg-[#F4F1EE]'>
-      <Container>
+    <main className='min-h-screen mx-10'>
+      <Container className=''>
         <Suspense>
           <Header
             hasSearch={false}
             hasCart={false}
-            className='border-b-gray-200'
+            className='border-b-amber-900'
           />
         </Suspense>
         {children}

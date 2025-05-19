@@ -10,6 +10,7 @@ export default async function ProductModalPage({
   const product = await prisma.product.findFirst({
     where: {
       id: Number(id),
+      deletedAt: null,
     },
     include: {
       ingredients: true,
