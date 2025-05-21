@@ -8,12 +8,10 @@ export const metadata: Metadata = {
   description: 'Ресторан быстрого питания',
 };
 
-export default function ApplicationLayout({
+export default function VacanciesLayout({
   children,
-  modal,
 }: Readonly<{
   children: React.ReactNode;
-  modal: React.ReactNode;
 }>) {
   return (
     <main className='min-h-screen'>
@@ -25,7 +23,6 @@ export default function ApplicationLayout({
         />
       </Suspense>
       {children}
-      {modal}
     </main>
   );
 }
