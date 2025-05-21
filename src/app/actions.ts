@@ -111,7 +111,12 @@ export async function createOrder(data: CheckoutFormValues) {
         totalAmount: order.totalAmount,
         paymentUrl,
       })
-    );
+    ).catch((error) => {
+      // eslint-disable-next-line
+      console.log(
+        `Не удалось отправить информацию о заказе на почту ${data.email}: ${error}`
+      );
+    });
 
     return paymentUrl;
   } catch (error) {

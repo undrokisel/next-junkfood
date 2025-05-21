@@ -10,6 +10,7 @@ import { cn } from '@/shared/lib/utils';
 import { Suspense } from 'react';
 import { findShaurma } from '@/shared/lib';
 import { GetSearchParams } from '@/shared/lib/find-shaurmas';
+import { Chat } from '@/shared/lib/ElfsightWidget';
 import { Stories } from '../../../components/shared/stories';
 
 export default async function Home({
@@ -69,6 +70,9 @@ export default async function Home({
                   />
                 )
             )}
+          </div>
+          <div className='overflow-hidden bg-green-50'>
+            <Chat />
           </div>
         </div>
       </Container>

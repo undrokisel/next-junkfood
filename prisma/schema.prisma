@@ -89,7 +89,7 @@ model ProductVariant {
     // и заказов
     // временное решение: OrderItem не создавать, хранить товары заказа в Json
     // orderItems OrderItem[]
-    deletedAt   DateTime?
+    deletedAt DateTime?
     createdAt DateTime   @default(now())
     updatedAt DateTime   @updatedAt
 }
@@ -327,4 +327,20 @@ model StoryItem {
     createdAt  DateTime @default(now())
     heading    String?
     subheading String?
+}
+
+model ApplicationVacancy {
+    id                    Int                      @id @default(autoincrement())
+    phone                 String
+    fio                   String
+    comment               String?
+    createdAt             DateTime                 @default(now())
+    status                ApplicationVacancyStatus @default(PENDING)
+    adminComment          String?
+    adminCommentCreatedAt DateTime?
+}
+
+enum ApplicationVacancyStatus {
+    PENDING
+    CANCELLED
 }

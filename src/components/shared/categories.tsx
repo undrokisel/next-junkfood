@@ -52,7 +52,8 @@ export const Categories: React.FC<Props> = ({ categories, className }) => {
   return (
     <ul
       className={cn(
-        `inline-flex gap-1 bg-gray-50 p-1 rounded-md bg-transparent`,
+        `inline-flex gap-1 bg-gray-50 
+        p-1 rounded-md bg-transparent`,
         className
       )}
     >
@@ -87,7 +88,7 @@ export const Categories: React.FC<Props> = ({ categories, className }) => {
               `
                 )}
               >
-                <div tabIndex={-1}>
+                <div>
                   {category.name[0].toUpperCase() + category.name.slice(1)}
                 </div>
               </a>

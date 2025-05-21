@@ -124,8 +124,31 @@ html {
 input.react-dadata__input {
   background-color: #f0fdf4;
 }
+
 input.react-dadata__input:hover,
 input.react-dadata__input:focus {
   background-color: rgb(254, 243, 199);
   outline: none !important;
+}
+
+/* Chat */
+[aria-label='Open chat window'],
+[aria-label='Close chat window'][class^='ButtonBase'] {
+  background-color: green !important;
+  opacity: 0.7;
+}
+
+[class^='Header__Component-sc'],
+[class^='Window__ChatGroup-sc'] {
+  background-color: #f0fdf4 !important;
+}
+
+[class^='ChatLayout__Message-sc-'] {
+  background-color: #dcfce7 !important;
+}
+
+a[href*='elfsight.com'] {
+  background-color: black !important;
+  /* display: none !important;
+  visibility: hidden; */
 }
