@@ -1,3 +1,5 @@
+'use client';
+
 import FaqItem from './faq-item';
 import { Heading } from './heading';
 

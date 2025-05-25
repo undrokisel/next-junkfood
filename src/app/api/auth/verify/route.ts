@@ -2,9 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '../../../../../prisma/prisma-client';
 
 export async function GET(req: NextRequest) {
+  const code = req.nextUrl.searchParams.get('code');
   try {
-    const code = req.nextUrl.searchParams.get('code');
-
     if (!code)
       return NextResponse.json({ error: 'Код не передан!' }, { status: 400 });
 

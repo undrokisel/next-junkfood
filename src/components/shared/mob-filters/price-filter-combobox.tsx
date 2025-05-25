@@ -38,12 +38,14 @@ export function PriceFilterCombobox({ filters, className }: ComboboxProps) {
             bg-green-100 
             hover:bg-amber-200 focus:bg-amber-200
               hover:shadow-lg focus:shadow-lg 
+              border-2 border-green-600 text-sm sm:text-lg py-0 px-2
             `,
             className
           )}
         >
-          {`Цена: от ${valueFrom} до ${valueTo}`}
-          <ChevronsUpDown className='ml-1 h-4 w-4 shrink-0 opacity-50' />
+          <span className='hidden sm:block'>{`Цена: от ${valueFrom} до ${valueTo}`}</span>
+          <span className='sm:hidden'>Цена</span>
+          <ChevronsUpDown className='hidden sm:block ml-1 h-4 w-4 shrink-0 opacity-50' />
         </Button>
       </PopoverTrigger>
       <PopoverContent className='max-w-[200px] h-9 p-0 '>

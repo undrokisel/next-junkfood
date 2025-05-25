@@ -34,23 +34,25 @@ export default async function Home({
         <Title size='lg' text='Весь ассортимент' className='ml-4' />
       </Container>
 
-      <Container className='md:mt-[40px]'>
-        <Suspense>
-          <FiltersMob
-            className={cn(`
-              ml-4
+      <Suspense>
+        <FiltersMob
+          className={cn(`
+              md:hidden ml-1 sm:ml-4 sticky top-[54px] sm:top-[68px] h-full z-50 py-1
               `)}
-          />
-        </Suspense>
-        <div className='flex gap-[50px]'>
-          <Suspense>
-            <Filters
-              className={cn(`
-              pl-4
-              w-[250px]
-              `)}
-            />
-          </Suspense>
+        />
+      </Suspense>
+      <Container className='md:mt-[40px] '>
+        <div className='flex h-full gap-[10px] lg:gap-[50px] relative'>
+          <div className='md:h-screen hidden md:overflow-y-auto md:block md:sticky md:top-[70px] md:min-w-[275px]'>
+            <Suspense>
+              <Filters
+                className={cn(`
+                pl-4  
+                w-[250px] 
+                `)}
+              />
+            </Suspense>
+          </div>
 
           <div className='flex flex-col gap-16 mb-4 ml-4 mt-6 md:mt-0'>
             {categories.map(

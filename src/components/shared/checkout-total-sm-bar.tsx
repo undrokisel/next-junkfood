@@ -23,53 +23,59 @@ export const CheckoutTotalSmBar: React.FC<Props> = ({
   const totalPrice = totalAmount + DELIVERY_PRICE + vatPrice;
 
   return (
-    <WhiteBlock className={cn('p-2 lg:p-6 sticky top-4 gap-0', className)}>
+    <WhiteBlock
+      className={cn(
+        'p-2 lg:p-6 top-4 gap-0 bg-green-100 h-full top-100',
+        className
+      )}
+    >
       <div className='flex justify-between gap-1'>
-        <span className='text-xl'>Итого:</span>
+        <span className='text-lg'>Итого:</span>
         {loading ? (
           <Skeleton className='h-9 w-48' />
         ) : (
-          <span className='h-9 text-[24px] font-extrabold'>{totalPrice} ₽</span>
+          <span className='h-9 text-lg font-extrabold'>{totalPrice} ₽</span>
         )}
       </div>
-
-      <CheckoutItemDetails
-        className='my-0'
-        title={
-          <div className='flex items-center leading-none'>
-            <Package size={18} className='mr-1 lg:mr-2 text-gray-400' />
-            Стоимость корзины:
-          </div>
-        }
-        value={
-          loading ? (
-            <Skeleton className='h-6 w-16 rounded-[6px]' />
-          ) : (
-            `${totalAmount} ₽`
-          )
-        }
-      />
-      <CheckoutItemDetails
-        className='my-0'
-        title={
-          <div className='flex items-center'>
-            <Truck size={18} className='mr-2 text-gray-400' />
-            Доставка:
-          </div>
-        }
-        value={
-          loading ? (
-            <Skeleton className='h-6 w-16 rounded-[6px]' />
-          ) : (
-            `${DELIVERY_PRICE} ₽`
-          )
-        }
-      />
+      <div className='flex justify-between row-gap-2 col-gap-1 flex-wrap'>
+        <CheckoutItemDetails
+          className='my-0'
+          title={
+            <div className='flex items-center leading-none'>
+              <Package size={18} className='mr-1 lg:mr-2 text-gray-400' />
+              Корзина:
+            </div>
+          }
+          value={
+            loading ? (
+              <Skeleton className='h-6 w-16 rounded-[6px]' />
+            ) : (
+              `${totalAmount} ₽`
+            )
+          }
+        />
+        <CheckoutItemDetails
+          className='my-0'
+          title={
+            <div className='flex items-center'>
+              <Truck size={18} className='mr-2 text-gray-400' />
+              Доставка:
+            </div>
+          }
+          value={
+            loading ? (
+              <Skeleton className='h-6 w-16 rounded-[6px]' />
+            ) : (
+              `${DELIVERY_PRICE} ₽`
+            )
+          }
+        />
+      </div>
 
       <Button
         loading={loading}
         type='submit'
-        className='w-full h-14 rounded-2xl mt-1 text-base font-bold'
+        className='w-full h-10 rounded-2xl mt-1 text-base font-bold fixed bottom-3 right-3 w-[250px] z-50'
       >
         Перейти к оплате
         <ArrowRight className='w-5 ml-2' />

@@ -3,7 +3,6 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { useIngredients, useFilters, useQueryFilters } from '@/hooks';
-import { useWindowSize } from 'react-use';
 import { Title } from './title';
 import { Input, Slider } from '../ui';
 import { CheckboxFilterGroup } from './checkbox-filter-group';
@@ -13,12 +12,9 @@ interface Props {
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
-  const { width } = useWindowSize();
   const { ingredients, ingredientsLoading } = useIngredients();
   const filters = useFilters();
   useQueryFilters(filters);
-
-  if (width < 800) return null;
 
   const updatePriceRange = (prices: number[]) => {
     filters.setPriceRange('priceFrom', prices[0]);
@@ -40,7 +36,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
       {/* sizes checkboxes */}
       <CheckboxFilterGroup
         title='Размер шаурмы'
-        className='mt-5'
+        className='mt-2'
         items={[
           { text: 'мини', value: '1' },
           { text: 'стандарт', value: '2' },

@@ -20,6 +20,7 @@ import {
   FilterCheckbox,
   FilterCheckboxProps,
 } from '@/components/shared/filter-checkbox';
+import { cn } from '@/shared/lib/utils';
 import { Input } from '../../ui';
 
 type Item = FilterCheckboxProps;
@@ -35,6 +36,7 @@ interface ComboboxProps {
   defaultValue?: string[];
   selectedIds?: Set<string>;
   name?: string;
+  className?: string;
 }
 
 export function CheckboxFilterCombobox({
@@ -49,6 +51,7 @@ export function CheckboxFilterCombobox({
   onCheckboxClick,
   selectedIds,
   name,
+  className,
 }: ComboboxProps) {
   const [open, setOpen] = React.useState(false);
   // const [value, setValue] = React.useState('');
@@ -74,15 +77,18 @@ export function CheckboxFilterCombobox({
           variant='ghost'
           role='combobox'
           aria-expanded={open}
-          className={`
+          className={cn(
+            `
             justify-between text-black text-lg
              bg-green-100 transition-all duration-300 
              hover:shadow-lg focus:shadow-lg 
              hover:bg-amber-200 focus:bg-amber-200
-             `}
+             `,
+            className
+          )}
         >
           {title}
-          <ChevronsUpDown className='ml-1 h-4 w-4 shrink-0 opacity-50' />
+          <ChevronsUpDown className='hidden sm:block ml-1 h-4 w-4 shrink-0 opacity-50' />
         </Button>
       </PopoverTrigger>
       <PopoverContent className='max-w-[180px] p-0 '>

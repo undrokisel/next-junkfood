@@ -7,11 +7,13 @@ import { Button } from '../ui';
 
 interface Props {
   onClickSignIn: VoidFunction;
+  theme?: 'dark' | 'light';
   className?: string;
 }
 
 export const ProfileButton: React.FC<Props> = ({
   onClickSignIn,
+  theme = 'light',
   className,
 }) => {
   const { data: session } = useSession();
@@ -21,14 +23,23 @@ export const ProfileButton: React.FC<Props> = ({
         <Button
           onClick={onClickSignIn}
           variant='outline'
-          className='flex items-center gap-1
+          className={`cursor-pointer
+            flex items-center gap-1
             transition-all duration-300
             hover:bg-amber-200 
-            focus:bg-amber-200 
-          '
+            focus:bg-amber-200 px-3 sm:px-4
+            
+            ${
+              theme === 'dark'
+                ? `
+              text-white border-white  hover:text-green-800 focus:text-green-800
+            `
+                : ''
+            }
+          `}
         >
           <User size={16} />
-          <span>Войти</span>
+          <span className='hidden sm:block'>Войти</span>
         </Button>
       ) : (
         <Link href='/profile'>

@@ -3,6 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui';
 import { registerUser } from '@/app/actions';
+import { Title } from '@/components/shared/title';
 import { formRegisterSchema, RegisterFormValues } from './schemas';
 import { FormInput } from '../../../form/form-input';
 
@@ -53,8 +54,14 @@ export const RegisterForm: React.FC<Props> = ({
         className='flex flex-col gap-5'
         onSubmit={form.handleSubmit(onSubmit)}
       >
+        <div className='mr-2'>
+          <Title text='Регистрация' size='md' className='font-bold' />
+        </div>
+        {/* <div className='flex flex-wrap gap-2 justify-between'> */}
         <FormInput name='email' label='Почта' required />
         <FormInput name='fullName' label='Полное имя' required />
+        {/* </div> */}
+        {/* <div className='flex flex-wrap gap-2 justify-between'> */}
         <FormInput name='password' label='Пароль' type='password' required />
         <FormInput
           name='confirmPassword'
@@ -62,6 +69,7 @@ export const RegisterForm: React.FC<Props> = ({
           label='Подтверждение пароля'
           required
         />
+        {/* </div> */}
 
         <Button
           className='h-12 text-base'

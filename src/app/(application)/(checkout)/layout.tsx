@@ -15,7 +15,7 @@ export default function CheckoutLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className='min-h-screen mx-10'>
+    <main className='min-h-screen mx-2 sm:mx-10'>
       <Container className=''>
         <Suspense>
           <Header

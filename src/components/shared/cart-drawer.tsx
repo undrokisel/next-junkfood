@@ -41,7 +41,7 @@ export const CartDrawer: React.FC<PropsWithChildren> = ({ children }) => {
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
 
-      <SheetContent className='flex flex-col justify-between pb-0 bg-green-100'>
+      <SheetContent className='flex flex-col justify-between pb-0 bg-green-100 '>
         <SheetDescription className='sr-only' />
         <div
           className={cn(

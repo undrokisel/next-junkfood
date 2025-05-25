@@ -19,7 +19,10 @@ export default function VacanciesLayout({
         <Header
           hasCart={false}
           hasSearch={false}
-          className='bg-green-200/45 border-none'
+          theme='dark'
+          className={`
+              border-none bg-white/25   inset-0  _sticky z-50
+            `}
         />
       </Suspense>
       {children}

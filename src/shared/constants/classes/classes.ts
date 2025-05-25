@@ -7,3 +7,9 @@ export const baseBgInteractiveClass = `
     hover:shadow-md
     focus:shadow-md
 `;
+
+export const shadowClass = `
+    hover:shadow-md
+    focus:shadow-md
+    active:shadow-md
+`;

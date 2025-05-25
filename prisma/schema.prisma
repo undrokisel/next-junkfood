@@ -344,3 +344,25 @@ enum ApplicationVacancyStatus {
     PENDING
     CANCELLED
 }
+
+model Blog {
+    id    Int    @id @default(autoincrement())
+    title String
+    slug  String
+
+    description String
+    type        ArticleType
+
+    imgSrc      String
+    readingTime String?  @default("10")
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    paragraphs Json?
+}
+
+enum ArticleType {
+    KITCHEN
+    TEAM
+    OTHER
+}

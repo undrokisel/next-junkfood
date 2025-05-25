@@ -83,22 +83,20 @@ export default function CheckoutPage() {
   };
 
   return (
-    <Container className='mt-10'>
+    <Container className='mt-4 sm:mt-10'>
       <Title
         text='Оформление заказа'
-        className='font-extrabold mb-8 text-[36px]'
+        className='font-extrabold mb-4 sm:mb-8 text-2xl sm:text-[36px]'
       />
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className='flex gap-2 lg:gap-10'>
+          <div className='flex gap-2 lg:gap-10 '>
             <div className='flex flex-col gap-2 lg:gap-10 flex-1 mb-20'>
               {width <= 600 && (
-                <div className='relative'>
-                  <CheckoutTotalSmBar
-                    totalAmount={totalAmount}
-                    loading={loading || submitting}
-                  />
-                </div>
+                <CheckoutTotalSmBar
+                  totalAmount={totalAmount}
+                  loading={loading || submitting}
+                />
               )}
               <CheckoutCart
                 items={items}
@@ -117,7 +115,7 @@ export default function CheckoutPage() {
 
             {/* Правая часть */}
             {width > 600 && (
-              <div className='w-[250px] sm:w-[300px] md:w-[350px] lg:w-[450px] '>
+              <div className='w-[220px] _sm:w-[300px] _md:w-[350px] lg:w-[350px] '>
                 <CheckoutSidebar
                   totalAmount={totalAmount}
                   loading={loading || submitting}

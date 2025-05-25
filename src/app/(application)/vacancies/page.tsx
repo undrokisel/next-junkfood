@@ -1,7 +1,7 @@
 import { Container } from '@/components/shared';
 import { Chat } from '@/shared/lib/ElfsightWidget';
-import { faqsKitchen } from '@/shared/constants/faqs/faqs-kitchen';
-import { faqsСourier } from '@/shared/constants/faqs/faqs-courier';
+import { faqsKitchen } from '@/shared/constants/mockData/faqs/faqs-kitchen';
+import { faqsСourier } from '@/shared/constants/mockData/faqs/faqs-courier';
 import { IncomeCalculator } from '@/components/shared/Income-calculator';
 import { VacancyForm } from '@/components/shared/vacancy-form';
 import { HeroVacancy } from '@/components/shared/hero-vacancy';

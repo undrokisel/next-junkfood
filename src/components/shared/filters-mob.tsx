@@ -32,7 +32,7 @@ export const FiltersMob: React.FC<Props> = ({ className }) => {
 
       {/* top checkboxes */}
 
-      <div className='flex gap-2 flex-wrap'>
+      <div className='flex gap-1 sm:gap-2 flex-wrap'>
         {/* sizes checkboxes */}
         <CheckboxFilterCombobox
           title='Размер шаурмы'
@@ -44,17 +44,19 @@ export const FiltersMob: React.FC<Props> = ({ className }) => {
           onCheckboxClick={filters.toggleSizes}
           selectedIds={filters.selectedSizes}
           name='sizes'
+          className='border-2 border-green-600 text-sm sm:text-lg py-0 px-2'
         />
 
         {/* ingridients bottom */}
         <CheckboxFilterCombobox
-          title='Ингредиенты: '
+          title='Ингредиенты'
           items={ingredientsItems}
           defaultItems={ingredientsItems.slice(0, 6)}
           limit={5}
           onCheckboxClick={filters.toggleIngredients}
           selectedIds={filters.selectedIngredients}
           name='ingredients'
+          className='border-2 border-green-600 text-sm sm:text-lg py-0 px-2'
         />
 
         <PriceFilterCombobox filters={filters} />

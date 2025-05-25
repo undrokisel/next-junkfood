@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const passwordSchema = z.string().min(4, {
-  message: 'Введите корректный пароль. Минимум 4 символа',
+  message: 'Минимум 4 символа',
 });
 
 export const formLoginSchema = z.object({
@@ -12,9 +12,7 @@ export const formLoginSchema = z.object({
 export const formRegisterSchema = formLoginSchema
   .merge(
     z.object({
-      fullName: z
-        .string()
-        .min(2, { message: 'Введите имя и фамилию. Минимум 2 символа' }),
+      fullName: z.string().min(2, { message: 'Минимум 2 символа' }),
       confirmPassword: passwordSchema,
     })
   )

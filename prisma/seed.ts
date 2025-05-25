@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { hashSync } from 'bcrypt';
+import { articles } from './seed_data/articles';
 import {
   categories,
   ingredients,
@@ -33,6 +34,10 @@ async function up() {
   // категории
   await prisma.category.createMany({
     data: categories,
+  });
+
+  await prisma.blog.createMany({
+    data: articles,
   });
 
   // ингредиенты
