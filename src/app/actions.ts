@@ -179,7 +179,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
       data: {
         fullName: body.fullName,
         email: body.email,
-        password: hashSync(body.email, 10),
+        password: hashSync(body.password, 10),
       },
     });
 

@@ -45,7 +45,10 @@ export const authOptions: AuthOptions = {
       async authorize(credentials) {
         if (!credentials) return null;
 
-        const values = { email: credentials.email };
+        const values = {
+          email: credentials.email,
+          // password: credentials.password,
+        };
 
         const findUser = await prisma.user.findFirst({ where: values });
 
