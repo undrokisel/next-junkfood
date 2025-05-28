@@ -259,7 +259,7 @@ async function up() {
   await prisma.story.createMany({
     data: [
       {
-        previewImageUrl: 'images/stories/gift.jpg',
+        previewImageUrl: 'images/stories/gift2.webp',
         text: 'Розыгрыш 3000 руб.',
         objectFit: 'cover',
         textPosition: 'bottom',
@@ -268,18 +268,18 @@ async function up() {
       },
       // 2
       {
-        previewImageUrl: 'images/stories/ice.png',
+        previewImageUrl: 'images/stories/ice.webp',
         text: '',
       },
       // 3
       {
-        previewImageUrl: 'images/stories/big2.png',
+        previewImageUrl: 'images/stories/big2.webp',
         text: '',
         objectFit: 'cover',
       },
       // 4
       {
-        previewImageUrl: 'images/stories/вакансия1.png',
+        previewImageUrl: 'images/stories/вакансия1.webp',
         text: 'Ищем повара',
         objectFit: 'cover',
         textPosition: 'top',
@@ -289,13 +289,13 @@ async function up() {
       },
       // 5
       {
-        previewImageUrl: 'images/stories/cocktails1.png',
+        previewImageUrl: 'images/stories/cocktails1.webp',
         objectFit: 'cover',
         textPosition: 'top',
       },
       // 6
       {
-        previewImageUrl: 'images/stories/конкурс1.png',
+        previewImageUrl: 'images/stories/конкурс1.webp',
         // text: 'Текст сторис',
         // text_color: 'amber-900',
         objectFit: 'cover',
@@ -303,7 +303,7 @@ async function up() {
       },
       // 7
       {
-        previewImageUrl: 'images/stories/разгон.png',
+        previewImageUrl: 'images/stories/разгон.webp',
         text: '',
         text_color: 'amber-900',
         objectFit: 'cover',
@@ -311,7 +311,7 @@ async function up() {
       },
       // 8
       {
-        previewImageUrl: 'images/stories/скидки.png',
+        previewImageUrl: 'images/stories/скидки.webp',
         objectFit: 'cover',
         textPosition: 'top',
         text: '',
@@ -319,7 +319,7 @@ async function up() {
       },
       // 9
       {
-        previewImageUrl: 'images/stories/супермен1.png',
+        previewImageUrl: 'images/stories/супермен1.webp',
         text: 'доставка - 40 мин',
         text_color: 'white',
         objectFit: 'cover',
@@ -332,97 +332,97 @@ async function up() {
     data: [
       {
         storyId: 1,
-        sourceUrl: 'images/stories/розыгрыш.png',
+        sourceUrl: 'images/stories/розыгрыш.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 2,
-        sourceUrl: 'images/stories/ice1.png',
+        sourceUrl: 'images/stories/ice1.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 3,
-        sourceUrl: 'images/stories/big2.png',
+        sourceUrl: 'images/stories/big2.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 4,
-        sourceUrl: 'images/stories/вакансия2.png',
+        sourceUrl: 'images/stories/вакансия2.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 5,
-        sourceUrl: 'images/stories/cocktails2.png',
+        sourceUrl: 'images/stories/cocktails2.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 5,
-        sourceUrl: 'images/stories/лето3.png',
+        sourceUrl: 'images/stories/лето3.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 5,
-        sourceUrl: 'images/stories/лето4.png',
+        sourceUrl: 'images/stories/лето4.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 5,
-        sourceUrl: 'images/stories/лето5.png',
+        sourceUrl: 'images/stories/лето5.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 6,
-        sourceUrl: 'images/stories/конкурс1.png',
+        sourceUrl: 'images/stories/конкурс1.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 6,
-        sourceUrl: 'images/stories/конкурс2.png',
+        sourceUrl: 'images/stories/конкурс2.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 6,
-        sourceUrl: 'images/stories/конкурс3.png',
+        sourceUrl: 'images/stories/конкурс3.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 6,
-        sourceUrl: 'images/stories/конкурс4.png',
+        sourceUrl: 'images/stories/конкурс4.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 6,
-        sourceUrl: 'images/stories/конкурс5.png',
+        sourceUrl: 'images/stories/конкурс5.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 7,
-        sourceUrl: 'images/stories/разгон.png',
+        sourceUrl: 'images/stories/разгон.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 8,
-        sourceUrl: 'images/stories/скидки.png',
+        sourceUrl: 'images/stories/скидки.webp',
         heading: '',
         subheading: '',
       },
       {
         storyId: 9,
-        sourceUrl: 'images/stories/супермен1.png',
+        sourceUrl: 'images/stories/супермен1.webp',
         heading: '',
         subheading: '',
       },

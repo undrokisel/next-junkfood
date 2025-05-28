@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
@@ -20,4 +22,14 @@ const nextConfig = {
   }
 };
 
-export default nextConfig;
+// export default nextConfig;
+
+export default withSentryConfig(nextConfig, {
+  org: "twoya-shaurma",
+  project: "twoya-shaurma",
+
+  // Set to `true` to suppress logs
+  silent: true,
+  // Automatically tree-shake Sentry logger statements to reduce bundle size
+  disableLogger: true,
+});

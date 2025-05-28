@@ -2,7 +2,8 @@
   "env": {
     "node": true,
     "es2021": true,
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "globals": {
     "React": true
@@ -33,7 +34,13 @@
     }
   },
   "root": true,
-  "ignorePatterns": ["dist"],
+  "ignorePatterns": [
+    "dist",
+    "**/__tests__/**",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.jest.setup.ts"
+  ],
   "rules": {
     "@next/next/no-img-element": "off",
     "no-shadow": "off",

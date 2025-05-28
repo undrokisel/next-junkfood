@@ -1,6 +1,7 @@
 import { authOptions } from '@/shared/constants/auth-options';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
+import * as Sentry from '@sentry/nextjs';
 import { prisma } from '../../../../../prisma/prisma-client';
 
 export const dynamic = 'force-dynamic';
@@ -29,6 +30,8 @@ export async function GET(req: any, res: any) {
   } catch (error) {
     // eslint-disable-next-line
     console.log(error);
+    Sentry.captureException(error);
+
     return NextResponse.json(
       { message: '[USER_GET] Server error' },
       { status: 500 }

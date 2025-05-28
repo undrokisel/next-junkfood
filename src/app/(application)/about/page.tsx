@@ -19,32 +19,32 @@ import { FadeUp } from '../../../components/shared/animation/FadeUp';
 
 const teamMembers = [
   {
-    imageUrl: '/images/about/team/girl.png',
+    imageUrl: '/images/about/team/girl.webp',
     name: 'Елизавета',
     position: 'Лучший повар-шаурмист',
   },
   {
-    imageUrl: '/images/about/team/girl3.png',
+    imageUrl: '/images/about/team/girl3.webp',
     name: 'Алена',
     position: 'Самый быстрый курьер',
   },
   {
-    imageUrl: '/images/about/team/man2.png',
+    imageUrl: '/images/about/team/man2.webp',
     name: 'Андрей',
     position: 'Основатель и Главный любитель шаурмы',
   },
   {
-    imageUrl: '/images/about/team/man3.png',
+    imageUrl: '/images/about/team/man3.webp',
     name: 'Егор',
     position: 'Шеф-повар с 20-летним стажем ',
   },
   {
-    imageUrl: '/images/about/team/girl2.png',
+    imageUrl: '/images/about/team/girl2.webp',
     name: 'Алина',
     position: 'Администратор, решит любой вопрос',
   },
   {
-    imageUrl: '/images/about/team/girl4.png',
+    imageUrl: '/images/about/team/girl4.webp',
     name: 'Юлия',
     position: 'Кассир, чья улыбка поднимет настроение',
   },
@@ -58,7 +58,8 @@ export default function AboutPage() {
         <div
           className='fixed top-0 left-0 right-0 bottom-0 -z-10 rounded-b-3xl md:rounded-b-[5rem]'
           style={{
-            backgroundImage: "url('/images/about/hero.jpg')",
+            // backgroundImage: "url('/images/about/hero.jpg')",
+            backgroundImage: "url('/images/about/hero.webp')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',

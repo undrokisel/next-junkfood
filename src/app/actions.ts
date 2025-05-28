@@ -200,7 +200,12 @@ export async function registerUser(body: Prisma.UserCreateInput) {
       VerificationUserTemplate({
         code,
       })
-    );
+    ).catch((error) => {
+      // eslint-disable-next-line
+      console.log(
+        `Не удалось отправить информацию о подтверждении заказа на почту ${createdUser.email}: ${error}`
+      );
+    });
   } catch (error) {
     // eslint-disable-next-line
     console.log('Error [CREATE_USER]', error);

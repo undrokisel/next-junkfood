@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import * as Sentry from '@sentry/nextjs';
 import { prisma } from '../../../../../prisma/prisma-client';
 
 export async function GET(req: NextRequest) {
@@ -40,6 +41,7 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     // eslint-disable-next-line
     console.log('[VERIFY_GET] Server error', error);
+    Sentry.captureException(error);
     return NextResponse.json(
       { message: '[VERIFY_GET] Server error' },
       { status: 500 }

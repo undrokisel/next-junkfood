@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import * as Sentry from '@sentry/nextjs';
 import { prisma } from '../../../../../prisma/prisma-client';
 
 export async function GET(
@@ -17,5 +18,6 @@ export async function GET(
   } catch (error) {
     // eslint-disable-next-line
     console.error('[GET ARTICLE ERROR:]: ', error);
+    Sentry.captureException(error);
   }
 }

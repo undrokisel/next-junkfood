@@ -28,7 +28,8 @@ export default function VacanciesLayout({
       </Suspense>
       <div
         style={{
-          backgroundImage: `url(${arrangeImgUrl('images/vacancies/hero.jpg')})`,
+          // backgroundImage: `url(${arrangeImgUrl('images/vacancies/hero.jpg')})`,
+          backgroundImage: `url(${arrangeImgUrl('images/vacancies/hero.webp')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

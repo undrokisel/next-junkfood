@@ -14,7 +14,8 @@ export default async function VacanciesPage() {
       <div
         className='fixed top-0 left-0 right-0 bottom-0 -z-10'
         style={{
-          backgroundImage: "url('/images/vacancies/hero.jpg')",
+          // backgroundImage: "url('/images/vacancies/hero.jpg')",
+          backgroundImage: "url('/images/vacancies/hero.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',

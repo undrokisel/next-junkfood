@@ -3,6 +3,7 @@ import { OrderStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { OrderSuccessTemplate } from '@/components/shared/email-templates';
 import { CartItemDTO } from '@/services/dto/cart.dto';
+import * as Sentry from '@sentry/nextjs';
 import { PaymentCallbackData } from '../../../../../@types/yookassa';
 import { prisma } from '../../../../../prisma/prisma-client';
 
@@ -51,7 +52,12 @@ export async function POST(req: NextRequest) {
         order.email,
         'Твоя шаурма / Ваш заказ успешно оформлен 🎉',
         OrderSuccessTemplate({ orderId: order.id, items })
-      );
+      ).catch((error) => {
+        // eslint-disable-next-line
+        console.log(
+          `Не удалось отправить информацию об оформлении заказа на почту ${order.email}: ${error}`
+        );
+      });
       return NextResponse.json('Success');
     }
     // Письмо о неуспешной оплате
@@ -59,6 +65,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     // eslint-disable-next-line
     console.log('[Checkout Callback] Error:', error);
+    Sentry.captureException(error);
     return NextResponse.json({ error: 'Server error' });
   }
 }

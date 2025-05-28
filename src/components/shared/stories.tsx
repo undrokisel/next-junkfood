@@ -69,6 +69,7 @@ export const Stories: React.FC<Props> = ({ className }) => {
             onClick={() => onClickStory(story)}
             height={220}
             width={150}
+            priority
             alt='сторис'
             className={`
             _rounded-full 

@@ -1,6 +1,7 @@
 import { findOrCreateCart, updateCartTotalAmount } from '@/shared/lib';
 import { NextRequest, NextResponse } from 'next/server';
 import { CreateCartItemValues } from '@/services/dto/cart.dto';
+import * as Sentry from '@sentry/nextjs';
 import { prisma } from '../../../../prisma/prisma-client';
 
 export async function GET(req: NextRequest) {
@@ -35,6 +36,7 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     // eslint-disable-next-line
     console.log('[CART_GET] Server error', error);
+    Sentry.captureException(error);
     return NextResponse.json(
       { message: 'Не удалось получить корзину get' },
       { status: 500 }
@@ -93,6 +95,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     // eslint-disable-next-line
     console.log('[CART_POST] Server error', error);
+    Sentry.captureException(error);
     return NextResponse.json(
       { message: 'Не удалось получить корзину post' },
       { status: 500 }

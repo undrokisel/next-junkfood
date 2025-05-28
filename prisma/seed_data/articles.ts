@@ -7,7 +7,7 @@ export const articles = [
     description: 'Как приготовить идеальную шаурму дома',
     type: ArticleType.KITCHEN,
     slug: 'houme-shaurma',
-    imgSrc: 'images/about/foods/2.jpeg',
+    imgSrc: 'images/about/foods/2.webp',
     readingTime: '1',
     paragraphs: JSON.stringify([
       {
@@ -27,7 +27,7 @@ export const articles = [
     description: '30 мая наша Лиза празднует свой юбилей',
     type: ArticleType.TEAM,
     slug: '',
-    imgSrc: 'images/about/team/girl.png',
+    imgSrc: 'images/about/team/girl.webp',
     readingTime: '3',
     paragraphs: JSON.stringify([
       {
@@ -42,7 +42,7 @@ export const articles = [
       'Хрустящая картошка фри без лишнего жира — легко повторить дома',
     type: ArticleType.KITCHEN,
     slug: 'houme-fri',
-    imgSrc: 'images/blog/2.jpeg',
+    imgSrc: 'images/blog/2.webp',
     readingTime: '1',
     paragraphs: JSON.stringify([
       {
@@ -57,7 +57,7 @@ export const articles = [
       'Сочные стрипсы в домашних условиях — быстрый перекус для всей семьи.',
     type: ArticleType.KITCHEN,
     slug: 'houme-strips',
-    imgSrc: 'images/blog/3.jpg',
+    imgSrc: 'images/blog/3.webp',
     readingTime: '3',
     paragraphs: JSON.stringify([
       {
@@ -71,7 +71,7 @@ export const articles = [
     description: 'Кухней теперь управляет шеф с 20-летним стажем!',
     type: ArticleType.TEAM,
     slug: '',
-    imgSrc: 'images/about/team/man3.png',
+    imgSrc: 'images/about/team/man3.webp',
     readingTime: '3',
     paragraphs: JSON.stringify([
       {
