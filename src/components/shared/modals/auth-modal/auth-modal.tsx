@@ -41,17 +41,21 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
         <DialogDescription className='sr-only' />
 
         {type === 'login' && (
-          <div className='flex gap-2'>
-            <Button
-              variant='secondary'
-              onClick={() =>
-                signIn('github', {
-                  callbackUrl: '/',
-                  redirect: true,
-                })
-              }
-              type='button'
-              className='gap-2 h-12 p-2 flex-1 
+          <div className=''>
+            <p className='text-center text-primary mb-4'>
+              Если Вы уже зарегистрированы, то можете войти через:
+            </p>
+            <div className='flex gap-2'>
+              <Button
+                variant='secondary'
+                onClick={() =>
+                  signIn('github', {
+                    callbackUrl: '/',
+                    redirect: true,
+                  })
+                }
+                type='button'
+                className='gap-2 h-12 p-2 flex-1 
                       bg-green-200
                       transition-all duration-300
                       hover:bg-amber-200
@@ -59,25 +63,25 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
                       hover:shadow-sm
                       focus:shadow-sm
                       '
-            >
-              <img
-                className='w-6 h-6'
-                src='/images/auth_providers/github.svg'
-                alt='авторизация на guthub'
-              />
-              GitHub
-            </Button>
+              >
+                <img
+                  className='w-6 h-6'
+                  src='/images/auth_providers/github.svg'
+                  alt='авторизация на guthub'
+                />
+                GitHub
+              </Button>
 
-            <Button
-              variant='secondary'
-              onClick={() =>
-                signIn('google', {
-                  callbackUrl: '/',
-                  redirect: true,
-                })
-              }
-              type='button'
-              className='gap-2 h-12 p-2 flex-1
+              <Button
+                variant='secondary'
+                onClick={() =>
+                  signIn('google', {
+                    callbackUrl: '/',
+                    redirect: true,
+                  })
+                }
+                type='button'
+                className='gap-2 h-12 p-2 flex-1
                       bg-green-200
                       transition-all duration-300
                       hover:bg-amber-200
@@ -85,17 +89,17 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
                       hover:shadow-sm
                       focus:shadow-sm
               '
-            >
-              <img
-                className='w-6 h-6'
-                // src='https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg'
-                src='/images/auth_providers/google.svg'
-                alt='авторизация на google'
-              />
-              Google
-            </Button>
+              >
+                <img
+                  className='w-6 h-6'
+                  // src='https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg'
+                  src='/images/auth_providers/google.svg'
+                  alt='авторизация на google'
+                />
+                Google
+              </Button>
 
-            {/* <Button
+              {/* <Button
                 variant='secondary'
                 onClick={() =>
                   signIn('vk', {
@@ -113,6 +117,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
                 />
                 Вконтакте
               </Button> */}
+            </div>
           </div>
         )}
 
