@@ -51,8 +51,8 @@ export function PriceFilterCombobox({ filters, className }: ComboboxProps) {
       <PopoverContent className='max-w-[200px] h-9 p-0 '>
         <Command className='bg-green-100'>
           <CommandList className=''>
-            <div className='flex gap-2 justify-between'>
-              <div className='flex items-center gap-2 pl-2 p-1 '>
+            <div className='flex gap-1 justify-between'>
+              <div className='flex items-center gap-1 pl-2 p-1 '>
                 <label htmlFor='from'>от:</label>
                 <Input
                   id='from'
@@ -74,7 +74,7 @@ export function PriceFilterCombobox({ filters, className }: ComboboxProps) {
                     `}
                 />
               </div>
-              <div className='flex items-center gap-2 pl-2 p-1'>
+              <div className='flex items-center gap-1 pl-2 p-1'>
                 <label htmlFor='to'>до:</label>
                 <Input
                   id='to'

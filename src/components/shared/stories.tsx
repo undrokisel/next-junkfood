@@ -39,7 +39,7 @@ export const Stories: React.FC<Props> = ({ className }) => {
   return (
     <Container
       className={cn(
-        'flex items-center justify-between gap-2 my-10 overflow-x-auto scrollbar',
+        'flex items-center justify-between gap-2 my-10 overflow-x-auto scrollbar z-[9999]',
         className
       )}
     >
@@ -105,8 +105,9 @@ export const Stories: React.FC<Props> = ({ className }) => {
         <div
           className={`
           fixed left-0 top-0 w-full h-full 
-          bg-black/80 flex items-center justify-center z-30
+          bg-black/80 flex items-center justify-center
         `}
+          style={{ zIndex: '9999' }}
         >
           <div className='relative flex justify-center items-center'>
             <button
