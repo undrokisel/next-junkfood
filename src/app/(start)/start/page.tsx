@@ -22,8 +22,8 @@ function Start() {
           <FadeVisible>
             <Title
               size='lg'
-              text='Веб-приложение для сети ресторанов быстрого питания'
-              className='sm:ml-6 text-lg sm:text-xl lg:text-2xl 2xl:text-3xl leading-none'
+              text='Веб-приложение для клиентов сети ресторанов быстрого питания'
+              className='sm:ml-6 text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl leading-none font-bold'
             />
           </FadeVisible>
           {/* <FadeVisible>
@@ -46,7 +46,7 @@ function Start() {
                 Представляю Вашему вниманию
               </span>
               <span className='text-lg sm:text-xl lg:text-2xl 2xl:text-3xl leading-none'>
-                веб-приложение для сети ресторанов быстрого питания
+                веб-приложение для клиентов сети ресторанов быстрого питания
               </span>
               <span className='text-lg sm:text-xl lg:text-2xl 2xl:text-3xl leading-none'>
                 <b>&ldquo;Твоя Шаурма&ldquo;</b>
