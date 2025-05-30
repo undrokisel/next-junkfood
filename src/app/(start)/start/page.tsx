@@ -26,13 +26,13 @@ function Start() {
               className='sm:ml-6 text-lg sm:text-xl lg:text-2xl 2xl:text-3xl leading-none'
             />
           </FadeVisible>
-          <FadeVisible>
+          {/* <FadeVisible>
             <Title
               size='lg'
               text='&ldquo;Твоя Шаурма&ldquo;'
               className='text-xl text-lg sm:text-xl lg:text-2xl 2xl:text-3xl leading-none'
             />
-          </FadeVisible>
+          </FadeVisible> */}
         </div>
 
         {/* центральный блок */}
