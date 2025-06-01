@@ -16,6 +16,7 @@ export const shadowClass = `
 
 export const footerInteractiveClass = `
     cursor-pointer
+    w-fit
     transition-all
     duration-300
     hover:text-amber-200

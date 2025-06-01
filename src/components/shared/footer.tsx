@@ -84,41 +84,42 @@ export const Footer: React.FC<Props> = ({ theme = 'light', className }) => {
 
                 <div className='flex flex-col mb-2'>
                   <span className='text-amber-200 font-bold'>Контакты:</span>
-                  <li className={`${footerInteractiveClass}`}>
+                  <li>
                     <Link
                       href='tel:891289887898'
                       target='_blank'
-                      className='flex item-center gap-3'
+                      className={`${footerInteractiveClass} flex item-center gap-3`}
                     >
                       <PhoneCallIcon />
                       <span>+7(912)-898-878-98</span>
                     </Link>
                   </li>
-                  <li className={`${footerInteractiveClass}`}>
+                  <li>
                     <Link
                       href='mailto:twoya-shaurma@gmail.com'
                       target='_blank'
-                      className='flex item-center gap-3'
+                      className={`${footerInteractiveClass} flex item-center gap-3`}
                     >
                       <MailIcon />
                       <span>twoya-shaurma@gmail.com</span>
                     </Link>
                   </li>
-                  <li className={`${footerInteractiveClass}`}>
+                  <li>
                     <Link
                       href='https://t.me/duhovnij'
                       target='_blank'
-                      className='flex item-center gap-3'
+                      className={`${footerInteractiveClass} flex item-center gap-3`}
+                      style={{}}
                     >
                       <PiTelegramLogo size={24} />
                       <span>@twoya_shaurma</span>
                     </Link>
                   </li>
-                  <li className={`${footerInteractiveClass}`}>
+                  <li>
                     <Link
                       href='https://vk.com'
                       target='_blank'
-                      className='flex item-center gap-3'
+                      className={`${footerInteractiveClass} flex item-center gap-3`}
                     >
                       <IoLogoVk size={24} />
                       <span>twoya_shaurma</span>
@@ -132,23 +133,37 @@ export const Footer: React.FC<Props> = ({ theme = 'light', className }) => {
                 _text-sm sm:text-lg text-white footer-text
               `}
               >
-                <li className={`${footerInteractiveClass}`}>
-                  <Link href='#start' className='flex gap-1'>
+                <li>
+                  <Link
+                    href='#start'
+                    className={`${footerInteractiveClass} flex gap-1`}
+                  >
                     <span>Наверх страницы</span>
                     <ArrowUp />
                   </Link>
                 </li>
-                <li className={`${footerInteractiveClass}`}>
-                  <Link href='/'>Меню</Link>
+                <li>
+                  <Link href='/' className={`${footerInteractiveClass}`}>
+                    Меню
+                  </Link>
                 </li>
-                <li className={`${footerInteractiveClass}`}>
-                  <Link href='/about'>О нас</Link>
+                <li>
+                  <Link className={`${footerInteractiveClass}`} href='/about'>
+                    О нас
+                  </Link>
                 </li>
-                <li className={`${footerInteractiveClass}`}>
-                  <Link href='/vacancies'>Вакансии</Link>
+                <li>
+                  <Link
+                    className={`${footerInteractiveClass}`}
+                    href='/vacancies'
+                  >
+                    Вакансии
+                  </Link>
                 </li>
-                <li className={`${footerInteractiveClass}`}>
-                  <Link href='/blog'>Блог</Link>
+                <li>
+                  <Link className={`${footerInteractiveClass}`} href='/blog'>
+                    Блог
+                  </Link>
                 </li>
 
                 <div className={` flex justify-between gap-1 sm:gap-2 `}>
@@ -162,8 +177,9 @@ export const Footer: React.FC<Props> = ({ theme = 'light', className }) => {
                   />
                 </div>
 
-                <li className={`${footerInteractiveClass} leading-none`}>
+                <li>
                   <Link
+                    className={`${footerInteractiveClass} leading-none`}
                     target='_blank'
                     href='https://next-junkfood-users-docs.vercel.app/'
                   >
@@ -171,8 +187,9 @@ export const Footer: React.FC<Props> = ({ theme = 'light', className }) => {
                     <br /> документация
                   </Link>
                 </li>
-                <li className={`${footerInteractiveClass}`}>
+                <li>
                   <Link
+                    className={`${footerInteractiveClass}`}
                     target='_blank'
                     href='https://nuxt-junkfood-admin.vercel.app/'
                   >
