@@ -13,3 +13,13 @@ export const shadowClass = `
     focus:shadow-md
     active:shadow-md
 `;
+
+export const footerInteractiveClass = `
+    cursor-pointer
+    transition-all
+    duration-300
+    hover:text-amber-200
+    focus:text-amber-200
+    hover:underline underline-offset-4
+    focus:scale-105
+`;

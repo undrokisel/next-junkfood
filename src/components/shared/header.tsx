@@ -70,7 +70,7 @@ export const Header: React.FC<Props> = ({
   ];
 
   return (
-    <header className={cn('border z-50', className)}>
+    <header className={cn('border z-50', className)} id='start'>
       <Container className='flex justify-between items-center py-2 _px-2 flex-wrap z-50 gap-2'>
         {/* logo block */}
         <Link

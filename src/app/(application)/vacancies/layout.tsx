@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '../../globals.css';
 import { Header } from '@/components/shared/header';
 import { Suspense } from 'react';
+import { Footer } from '@/components/shared/footer';
 
 export const metadata: Metadata = {
   title: 'Твоя Shaurma',
@@ -26,6 +27,9 @@ export default function VacanciesLayout({
         />
       </Suspense>
       {children}
+      <Suspense>
+        <Footer />
+      </Suspense>
     </main>
   );
 }

@@ -44,17 +44,17 @@ export const ProfileButton: React.FC<Props> = ({
       ) : (
         <Link href='/profile'>
           <Button
-            variant='secondary'
+            variant='outline'
             className='bg-green-100 
-            flex items-center gap-2 
-            border-2 border-primary
+            flex items-center gap-1 
+            _border-2 border-primary
             transition-all duration-300
             hover:bg-amber-200 
-            focus:bg-amber-200 
+            focus:bg-amber-200 px-3 sm:px-4
             '
           >
             <CircleUser size={18} />
-            Профиль
+            <span className='hidden sm:block'>Профиль</span>
           </Button>
         </Link>
       )}

@@ -152,3 +152,16 @@ a[href*='elfsight.com'] {
   /* display: none !important;
   visibility: hidden; */
 }
+
+@media (max-width: 480px) {
+  .footer-ul {
+    justify-content: start;
+  }
+  .footer-text {
+    font-size: 20px !important;
+    width: 100%;
+  }
+  .footer__logo {
+    align-self: start !important;
+  }
+}

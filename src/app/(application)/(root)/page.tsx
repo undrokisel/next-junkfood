@@ -25,15 +25,12 @@ export default async function Home({
       <TopBar
         categories={categories.filter((cat) => cat.products.length > 0)}
       />
-
       <Stories />
-
       <Container className='mt-10'>
         {/* костыль для прокрутки */}
         <div className='invisible' id='шаурма' />
         <Title size='lg' text='Весь ассортимент' className='ml-4' />
       </Container>
-
       <Suspense>
         <FiltersMob
           className={cn(`
@@ -43,7 +40,7 @@ export default async function Home({
       </Suspense>
       <Container className='md:mt-[40px] '>
         <div className='flex h-full gap-[10px] lg:gap-[50px] relative'>
-          <div className='md:h-screen hidden md:overflow-y-auto md:block md:sticky md:top-[70px] md:min-w-[275px]'>
+          <div className='md:h-screen hidden md:overflow-y-auto scrollbar md:block md:sticky md:top-[70px] md:min-w-[275px]'>
             <Suspense>
               <Filters
                 className={cn(`
@@ -53,7 +50,6 @@ export default async function Home({
               />
             </Suspense>
           </div>
-
           <div className='flex flex-col gap-16 mb-4 ml-4 mt-6 md:mt-0'>
             {categories.map(
               (category, index) =>

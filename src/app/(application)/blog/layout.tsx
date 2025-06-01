@@ -3,6 +3,7 @@ import '../../globals.css';
 import { Header } from '@/components/shared/header';
 import { Suspense } from 'react';
 import { arrangeImgUrl } from '@/shared/lib/arrangeImgUrl';
+import { Footer } from '@/components/shared/footer';
 
 export const metadata: Metadata = {
   title: 'Твоя Shaurma',
@@ -40,6 +41,9 @@ export default function VacanciesLayout({
       {/* <img src={arrangeImgUrl('images/vacancies/hero.jpg')} alt='bg' className='abcolute inset-0 fixed -z-10 object-contain'/> */}
       <div className='abcolute inset-0 fixed -z-10 bg-green-900/70 ' />
       {children}
+      <Suspense>
+        <Footer />
+      </Suspense>
     </main>
   );
 }

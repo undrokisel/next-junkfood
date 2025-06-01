@@ -10,7 +10,7 @@ type Props = {
 
 export const FoodsBlock = ({ foodsBlockData, className }: Props) => {
   return (
-    <div className={cn(`flex flex-wrap gap-6`, className)}>
+    <div className={cn(`flex flex-wrap gap-12`, className)}>
       {foodsBlockData.map((item, index) => (
         <FadeUp key={index}>
           <FoodBlockItem item={item} />
