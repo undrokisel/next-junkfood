@@ -12,7 +12,7 @@ async function ArticlePage({ params }: { params: { id: string } }) {
   if (!article) return <NotFound />;
 
   return (
-    <div className='custom_container max-w-[1440px] mx-auto flex flex-col justify-center item-center gap-[30px] pt-14 px-8 '>
+    <div className='custom_container max-w-[1280px] mx-auto flex flex-col justify-center item-center gap-[30px] pt-14 px-8 '>
       <div className='flex lg:flex-row flex-col-reverse lg:gap-[43px] gap-[20px] justify-between '>
         <div className={`lg:w-[40%] 'opacity-100' transition-all`}>
           <ArticleImage article={article} />

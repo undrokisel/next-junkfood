@@ -9,7 +9,7 @@ async function BlogPage() {
 
   return (
     <>
-      <div className='custom_container max-w-[1440px] mx-auto'>
+      <div className='custom_container max-w-[1280px] mx-auto'>
         <div className='container mt-10 text-center'>
           <h1 className='text-[32px] md:text-[42px] lg:text-[60px] font-bold mb-10 text-white'>
             Блог
