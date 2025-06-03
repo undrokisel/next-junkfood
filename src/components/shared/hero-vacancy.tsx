@@ -30,7 +30,10 @@ export function HeroVacancy() {
           <div className='flex flex-col items-center justify-center gap-4 sm:flex-row'>
             <Link href='/vacancies/#calculator'>
               <FadeLeft>
-                <Button className='w-full max-w-xs text-lg font-semibold sm:w-auto'>
+                <Button
+                  className='w-full max-w-xs text-lg font-semibold sm:w-auto
+                '
+                >
                   Рассчитай свой доход
                 </Button>
               </FadeLeft>

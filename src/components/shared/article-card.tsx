@@ -49,6 +49,7 @@ const ArticleCard: React.FC<ArticleProps> = ({ art }) => {
                 alt={art.title}
                 width={440}
                 height={270}
+                priority
                 onError={() => setIsImgError(true)}
                 className='sm:h-[275px] h-full w-[413px]  sm:rounded-[40px] rounded-[30px] object-cover'
               />

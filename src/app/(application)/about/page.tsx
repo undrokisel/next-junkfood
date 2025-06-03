@@ -143,7 +143,11 @@ export default function AboutPage() {
                     size='lg'
                     className={cn(
                       baseBgInteractiveClass,
-                      `min-w-[250px] text-lg bg-primary text-white hover:text-primary focus:text-primary`
+                      `min-w-[250px] text-lg bg-primary text-white _hover:text-primary _focus:text-primary 
+                      transition-all duration-[3000] animate-pulse bg-gradient-to-r from-green-500 to-green-800
+                      hover:animate-none
+                      focus:animate-none
+                      `
                     )}
                   >
                     Cтать частью команды

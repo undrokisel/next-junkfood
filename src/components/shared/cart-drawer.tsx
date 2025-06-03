@@ -126,7 +126,12 @@ export const CartDrawer: React.FC<PropsWithChildren> = ({ children }) => {
                       onClick={() => setRedirecting(true)}
                       loading={redirecting}
                       type='submit'
-                      className='w-full h-12 text-base'
+                      className={`
+                        w-full h-12 text-base animate-pulse relative 
+                        overflow-hidden bg-gradient-to-r from-green-500 to-green-800
+                        hover:animate-none
+                        focus:animate-none
+                        `}
                     >
                       Оформить заказ
                       <ArrowBigRight className='w-5 ml-2' />

@@ -39,7 +39,8 @@ export const FoodBlockItem = ({ item }: Props) => {
           size='lg'
           className={cn(
             baseBgInteractiveClass,
-            `min-w-[250px] bg-transparent text-white text-lg border-white hover:text-green-600`
+            `min-w-[250px] bg-transparent text-white text-lg transition-all
+             border-white`
           )}
         >
           Перейти

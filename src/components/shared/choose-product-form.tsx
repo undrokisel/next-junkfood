@@ -80,7 +80,9 @@ export const ChooseProductForm: React.FC<Props> = ({
             h-[55px] 
             px-1 sm:px-10 
             text-base rounded-[18px] w-full 
-            mt-2 md:mt-4 lg:mt-10
+            mt-2 md:mt-4 lg:mt-10 animate-pulse relative overflow-hidden bg-gradient-to-r from-green-500 to-green-800
+            hover:animate-none
+            focus:animate-none
             `}
         >
           Добавить в корзину за {price} ₽

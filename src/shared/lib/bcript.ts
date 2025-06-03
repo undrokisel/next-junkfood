@@ -2,7 +2,7 @@
 
 import { compare, hashSync } from 'bcrypt';
 
-export const getHash = (str: string, num: number) => {
+export const getHash = async (str: string, num: number) => {
   return hashSync(str, num);
 };
 

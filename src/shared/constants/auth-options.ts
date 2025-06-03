@@ -14,6 +14,15 @@ export const authOptions: AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+      profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+          role: 'USER' as UserRole,
+        };
+      },
     }),
     GitHubProvider({
       clientId: process.env.GITHUB_ID || '',
@@ -84,6 +93,8 @@ export const authOptions: AuthOptions = {
      *
      */
     async signIn({ user, account }) {
+      if (!account || !user) return false;
+
       try {
         // если есть авторизация типа credentials, то есть по почте и паролю,
         // то пропускаем дальше
@@ -130,21 +141,28 @@ export const authOptions: AuthOptions = {
           // возвращаем булево значение
           return true;
         }
+        const passwordHash: string = await getHash(user.id.toString(), 10);
 
         // если пользователь не нашелся, то создаем его
-        await prisma.user.create({
+        const newUser = await prisma.user.create({
           data: {
             email: user.email,
             fullName: user.name || `Пользователь # + ${user.id}`,
             // password: hashSync(user.id.toString(), 10),
             // заглушка пароля, надо заменить
-            password: getHash(user.id.toString(), 10),
+            password: passwordHash,
             // если авторизовался через OAuth, то аккаунт будет считаться подтвержденным
             verified: new Date(),
             provider: account?.provider,
             providerId: account?.providerAccountId,
           },
         });
+
+        if (!newUser) {
+          // eslint-disable-next-line
+          console.error('Failed to create new user');
+          return false;
+        }
 
         return true;
       } catch (error) {

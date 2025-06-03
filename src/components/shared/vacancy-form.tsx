@@ -144,7 +144,12 @@ export function VacancyForm() {
                     )}
                   />
 
-                  <Button type='submit' className='w-full'>
+                  <Button
+                    type='submit'
+                    className='w-full animate-pulse bg-gradient-to-r from-green-500 to-green-800
+                      hover:animate-none
+                      focus:animate-none'
+                  >
                     Отправить анкету
                   </Button>
                 </form>

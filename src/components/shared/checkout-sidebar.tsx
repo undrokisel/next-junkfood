@@ -71,7 +71,12 @@ export const CheckoutSidebar: React.FC<Props> = ({
       <Button
         loading={loading}
         type='submit'
-        className='w-full h-14 rounded-2xl mt-6 text-base font-bold'
+        className={`
+          w-full h-14 rounded-2xl mt-6 text-base font-bold 
+          animate-pulse relative overflow-hidden bg-gradient-to-r from-green-500 to-green-800 
+          hover:animate-none
+          focus:animate-none
+        `}
       >
         Перейти к оплате
         <ArrowRight className='w-5 ml-2' />
